@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import * as firebase from 'firebase'
 
 import { HomePage } from '../pages/home/home';
 @Component({
@@ -16,6 +17,15 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
+    });
+
+    firebase.initializeApp({
+      apiKey: "AIzaSyAI4nKBcitR1zDruJUI0_YD5KvhxEHj_qM",
+      authDomain: "v2byeline.firebaseapp.com",
+      databaseURL: "https://v2byeline.firebaseio.com",
+      projectId: "v2byeline",
+      storageBucket: "v2byeline.appspot.com",
+      messagingSenderId: "423889102045"
     });
   }
 }
