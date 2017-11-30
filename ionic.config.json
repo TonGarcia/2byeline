@@ -1,0 +1,8 @@
+{
+  "name": "2byeline",
+  "app_id": "e3e64923",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
