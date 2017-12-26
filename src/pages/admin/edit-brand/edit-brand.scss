@@ -1,0 +1,39 @@
+.edit-brand {
+    .margin {
+        margin: 5px;
+    }
+    .list-ios > .item-block:first-child {
+        border-top: none;
+    }
+    .list-ios .item-block .item-inner {
+        border-bottom: 0.55px solid #f2f2f2;
+    }
+    .list-ios > .item-block:last-child {
+        border-bottom: none;
+    }
+    .select-text {
+        min-width: 16px;
+        font-size: 14px;
+    }
+    .label-ios,
+    .label-md,
+    .label-wp {
+        margin: 5px 16px;
+        font-size: 15px;
+        color: #999;
+    }
+    .item.item-label-floating .text-input {
+        margin: 0 0 8px 16px;
+        font-size: 15px;
+    }
+    .button-margin {
+        margin-top: 5px;
+    }
+    .error-message {
+        .label {
+            font-size: 15px;
+            text-align: center;
+            color: #f53d3d;
+        }
+    }
+}

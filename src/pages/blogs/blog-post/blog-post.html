@@ -1,0 +1,102 @@
+<ion-header>
+   <ion-navbar color="danger">
+      <button ion-button menuToggle>
+         <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title text-center>Post</ion-title>
+   </ion-navbar>
+</ion-header>
+<ion-content class="post">
+<ion-spinner *ngIf="!post" name="crescent" style="display:block; margin-left: auto; margin-right:auto; margin-top: 20px; margin-bottom:5px" ></ion-spinner>
+   <div *ngIf="post" style="padding: 10px;">
+      <ion-item no-lines no-padding>
+         <ion-avatar item-left>
+            <div [innerHTML]="post.post.author.image"></div>
+         </ion-avatar>
+         <div class="author-name">{{post.post.author.name}}</div>
+         <p style="font-size: 11px;"><ion-icon item-left ios="ios-time-outline" md="ios-time-outline"></ion-icon ><span class="date">{{post.post.date | keys}}</span></p>
+      </ion-item>
+      <h2 class="post-title">{{post.post.title}}</h2>
+      <img *ngIf="post.post.thumbnail_images?.medium?.url" src="{{post.post.thumbnail_images.medium.url}}">
+      <ion-card-content>
+         <div style="text-align: justify;" [innerHTML]="post.post.content"></div>
+      </ion-card-content>
+   <ion-row>
+    <ion-col>
+      <button ion-button icon-left clear small (click)="share(post.post)" class="share-button">
+        <ion-icon name="ios-share-alt-outline"></ion-icon>
+        <div>Share</div>
+      </button>
+    </ion-col>
+    <ion-col text-right>
+      <button ion-button icon-left clear small class="button-font-size">
+        <ion-icon name="text"></ion-icon>
+        <div>{{post.post.comment_count}} Comments</div>
+      </button>
+    </ion-col>
+    </ion-row>
+      <form #f="ngForm" class="comment-form">
+         <ion-list>
+            <ion-item>
+               <ion-label floating>Comment</ion-label>
+               <ion-input  type="text" [(ngModel)]="form.comment" name="comment" ></ion-input>
+            </ion-item>
+            <ion-item>
+               <ion-label floating>Name</ion-label>
+               <ion-input type="text" [(ngModel)]="form.name" name="name" ></ion-input>
+            </ion-item>
+            <ion-item>
+               <ion-label floating>Email</ion-label>
+               <ion-input type="email" [(ngModel)]="form.email" name="email" ></ion-input>
+            </ion-item>
+         </ion-list>
+         <div class="margin">
+            <button ion-button block color="secondary" text-uppercase [disabled]="disableSubmit" (click)="submit(form)" >Submit</button><br>
+         </div>
+      </form>
+      <div  *ngIf="status">
+         <ion-item no-lines>
+            <ion-avatar item-left>
+               <div [innerHTML]="status.image"></div>
+            </ion-avatar>
+            <h3>{{status.name}}</h3>
+            <h3>{{status.date}}</h3>
+            <h3>{{status.status}}</h3>
+         </ion-item>
+         <ion-item text-wrap>
+            <p [innerHTML] ="status.content"></p>
+         </ion-item>
+      </div>
+      <div *ngFor="let item of post.post.comments" class="comment">
+         <ion-item text-wrap no-lines>
+            <ion-avatar item-left>
+               <div [innerHTML]="item.image"></div>
+            </ion-avatar>
+            <h4>{{item.name}}</h4>
+            <p>{{item.date}}</p>
+         </ion-item>
+         <ion-card-content>
+            <p [innerHTML]="item.content"></p>
+         </ion-card-content>
+      </div>
+   </div>
+   <ion-fab right bottom *ngIf="post">
+      <button ion-fab color="light">
+         <ion-icon name="arrow-dropleft"></ion-icon>
+      </button>
+      <ion-fab-list side="left">
+         <button style="color: #3b5998" ion-fab (click)="shareWithFb(post.post)">
+            <ion-icon name="logo-facebook"></ion-icon>
+         </button>
+         <button style="color: #00aced" ion-fab (click)="shareWithTw(post.post)">
+            <ion-icon name="logo-twitter"></ion-icon>
+         </button>
+         <button style="color: #fb3958" ion-fab (click)="shareWithInstagram(post.post)">
+            <ion-icon name="logo-instagram"></ion-icon>
+         </button>
+         <button style="color: #34af23" ion-fab (click)="shareWithWhatsapp(post.post)">
+            <ion-icon name="logo-whatsapp"></ion-icon>
+         </button>
+      </ion-fab-list>
+   </ion-fab>
+</ion-content>

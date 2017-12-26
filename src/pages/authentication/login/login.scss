@@ -1,0 +1,158 @@
+.login {
+
+.login-phone{
+        margin: 10px;
+        .button{
+           margin-top: 10px;
+        }
+
+        .recaptcha{
+                iframe{
+                    margin: 5px;
+                }
+        }
+
+    }
+    background-color: #f5f5f5;
+    .profile-image img {
+        border-radius: 50%;
+        margin: 10px;
+        border: 4px solid rgba(162, 162, 162, 0.4);
+    }
+    .landing {
+        .profile-image {
+            border-radius: 50%;
+            margin: 10px;
+            border: 4px solid rgba(255, 0, 54, 0.4);
+        }
+        padding-top: 20px;
+        .item:first-child {
+            border-radius: 5px 5px 0 0;
+            border-bottom-color: #f53d3d;
+            box-shadow: inset 0 -1px 0 0 hsla(0, 0%, 91%, 0.54);
+        }
+        .error-message {
+            .label {
+                font-size: 15px;
+                text-align: center;
+                color: #f53d3d;
+            }
+        }
+        @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+        background-image: url("../assets/image/shop.png");
+        background-size: cover;
+        font-family: 'Source Sans Pro',
+        sans-serif;
+        .button {
+            border-radius: 5px;
+        }
+        .sign-in-label {
+            margin: 30px 10px 10px;
+            ion-label {
+                text-align: center;
+                color: #000;
+                font-family: 'Open Sans', serif;
+            }
+        }
+        .gmail-login-button {
+            margin: 10px 10px 10px;
+            color: #ffffff;
+            border-width: 0;
+            button {
+                background-color: #dd4b39;
+            }
+            .button.activated {
+                color: black;
+            }
+        }
+        .facebook-twitter-login {
+            margin: 10px;
+            ion-col {
+                padding: 0;
+            }
+            .facebook-login-button {
+                border-color: #f4f4f4;
+                color: #ffffff;
+                background-color: #2559bd;
+            }
+            .twitter-login-button {
+                border-color: #f4f4f4;
+                color: #ffffff;
+                background-color: #00aced;
+            }
+            .button.activated {
+                color: black;
+            }
+        }
+        .use-email {
+            margin: 40px 10px 10px;
+            ion-label {
+                text-align: center;
+                color: #000;
+            }
+        }
+        .login-register {
+            margin: 10px;
+            ion-col {
+                padding: 0;
+            }
+            .login {
+                text-transform: uppercase;
+                border-color: #f4f4f4;
+                color: #000000;
+                background-color: #ffffff;
+                border-color: #d2d2d2;
+            }
+            .register {
+                text-transform: uppercase;
+                border-color: #f4f4f4;
+                color: #000000;
+                background-color: #ffffff;
+                border-color: #d2d2d2;
+            }
+            .button.activated {
+                color: white;
+            }
+        }
+        ion-icon {
+            padding-right: 6px;
+        }
+    }
+    .register-form {
+        .error-message {
+            .label {
+                font-size: 15px;
+                text-align: center;
+                color: #f53d3d;
+            }
+        }
+        -webkit-animation-name: fadeInDown;
+        animation-name: fadeInDown;
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        min-height: 100%;
+        .button {
+            margin: 0px 20px 0 20px;
+        }
+        .card-ios .item-ios.item-block .item-inner {
+            border-bottom: 0.55px solid #f7f5f5;
+        }
+        .list-ios > .item-block:last-child,
+        .list-ios > .item-wrapper:last-child .item-block {
+            border-bottom: 0.55px solid #f7f5f5;
+        }
+        .login-header {
+            height: 60px;
+            .label {
+                text-align: center;
+            }
+        }
+    }
+}

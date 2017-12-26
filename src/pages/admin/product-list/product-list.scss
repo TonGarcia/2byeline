@@ -1,0 +1,112 @@
+.product-list {
+    .margin {
+        margin: 5px;
+    }
+    .stock-label {
+        margin: 0px;
+        text-align: right;
+        font-size: .9rem;
+        vertical-align: top;
+    }
+    ion-label {
+        margin: 5px 0px 0 12px;
+    }
+    h2 {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 14px;
+    }
+    ion-col {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding: 0;
+    }
+    .prod-list {
+        .button {
+            height: 2.2em;
+            font-size: 12px;
+            border-radius: 0;
+            margin: 0;
+            padding: 0;
+        }
+    }
+    .item {
+        padding: 0;
+        margin-bottom: 3px;
+    }
+    .item ion-thumbnail {
+        min-width: 5.6rem;
+        min-height: 5.6rem;
+        max-width: 10rem;
+        max-height: 10rem;
+        width: 9rem;
+        height: 9rem;
+        margin: 0;
+        padding: 0;
+    }
+    .item ion-thumbnail img {
+        min-width: 5.6rem;
+        min-height: 5.6rem;
+        max-width: 10rem;
+        max-height: 10rem;
+        width: 9rem;
+        height: 9rem;
+        margin: 0;
+        padding: 0;
+    }
+    .item.item-block .item-inner {
+        border-bottom: 0.55px solid #f2f2f2;
+    }
+    .list-ios > .item-block:last-child,
+    .list-ios > .item-wrapper:last-child .item-block {
+        border-bottom: 0.55px solid #f2f2f2;
+    }
+    .list-ios > .item-block:first-child {
+        border-top: none;
+    }
+    .list-md > .item-block:first-child {
+        border-top: none;
+    }
+    .list-md > .item-block:last-child {
+        border-bottom: 1px solid #f2f2f2;
+    }
+    .filter {
+        .list-header {
+            border-bottom: none;
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: 0;
+            background: #f4f4f4;
+        }
+        .item-radio.item ion-label {
+            margin-left: 16px;
+            font-size: 15px;
+        }
+        .item-radio-checked.item ion-label {
+            color: $shadow;
+        }
+        .radio .radio-checked .radio-inner {
+            border-color: $shadow;
+        }
+        .list {
+            margin: 0 0 16px 0;
+        }
+        .button-ios {
+            height: 2.8em;
+            border-radius: 15px;
+            font-size: 13px;
+            width: 300px;
+            margin: auto;
+        }
+        .list-ios > .item-block:last-child,
+        .list-md > .item-block:last-child {
+            border-bottom: none;
+        }
+    }
+}
+.add {
+    background-color: transparent;
+    color: #fff;
+    font-size: 15px;
+    padding: 0 8px;
+}

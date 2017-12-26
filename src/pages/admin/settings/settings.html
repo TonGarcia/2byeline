@@ -1,0 +1,113 @@
+<!--
+   Generated template for the SettingsPage page.
+   
+   See http://ionicframework.com/docs/components/#navigation for more info on
+   Ionic pages and navigation.
+   -->
+<ion-header>
+   <ion-navbar color="danger">
+      <ion-title text-center>{{"Settings" | translate}}</ion-title>
+   </ion-navbar>
+</ion-header>
+<ion-content>
+   <div>
+      <form #f="ngForm">
+         <ion-list>
+            <!--ion-item style="padding-top:10px">
+               <ion-label floatingy>{{"SelectLanguage" | translate}}</ion-label>
+               <ion-select [(ngModel)]="language" (ngModelChange)="onChange($event)" name="languages">
+               <ion-option value="arabic">{{ "arabic" | translate }}</ion-option>
+               <ion-option value="chinese">{{ "chinese" | translate }}</ion-option>
+               <ion-option value="english">{{ "english" | translate }}</ion-option>
+               <ion-option value="french">{{ "french" | translate }}</ion-option>
+               <ion-option value="hindi">{{ "hindi" | translate }}</ion-option>
+               <ion-option value="russian">{{ "russian" | translate }}</ion-option>
+               </ion-select>
+            </ion-item-->
+            <ion-item style="padding-top:10px;padding-bottom: 5px;">
+               <ion-label floatingy>Currency</ion-label>
+                  <ion-select [(ngModel)]="form.currency" name="currency">
+                     <ion-option value="USD">US Dollers</ion-option>
+                     <ion-option value="INR">Indian Rupees</ion-option>
+                     <ion-option value="KWD ">Kuwaiti Dinar</ion-option>
+                     <ion-option value="EUR">Euro</ion-option>
+                  </ion-select>
+            </ion-item>
+
+            <ion-item  style=" background-color:#f2f2f2;margin-bottom:4px" no-lines>
+               <ion-label *ngIf="form.cod" color="secondary" style="font-size: 15px;">COD Enabled</ion-label>
+               <ion-label *ngIf="!form.cod" color="danger" style="font-size: 15px;">COD Disabled</ion-label>
+               <ion-toggle checked="true" [(ngModel)]="form.cod" name="subscribe"></ion-toggle>
+            </ion-item>
+
+            <ion-item  style=" background-color:#f2f2f2;margin-bottom:4px" no-lines>
+               <ion-label *ngIf="form.paypal" color="secondary" style="font-size: 15px;">Paypal Enabled</ion-label>
+               <ion-label *ngIf="!form.paypal" color="danger" style="font-size: 15px;">Paypal Disabled</ion-label>
+               <ion-toggle checked="true" [(ngModel)]="form.paypal" name="paypal"></ion-toggle>
+            </ion-item>
+
+            <div *ngIf="form.paypal">
+               <form #f="ngForm">
+                  <ion-list>
+                     <ion-item>
+                        <ion-label floating>Add Client ID</ion-label>
+                        <ion-input required type="email" [(ngModel)]="form.client_id"  name="client_id"></ion-input>
+                     </ion-item>
+                     <ion-item>
+                        <ion-label floating>Add PayPal Environment Sandbox</ion-label>
+                        <ion-input required type="text" [(ngModel)]="form.environment_sandbox" name="environment_sandbox"></ion-input>
+                     </ion-item>
+                  </ion-list>
+               </form>
+            </div>
+
+            <ion-item  style=" background-color:#f2f2f2;margin-bottom:4px" no-lines>
+               <ion-label *ngIf="form.stripe" color="secondary" style="font-size: 15px;">Stripe Enabled</ion-label>
+               <ion-label *ngIf="!form.stripe" color="danger" style="font-size: 15px;">Stripe Disabled</ion-label>
+               <ion-toggle checked="true" [(ngModel)]="form.stripe" name="subscribe"></ion-toggle>
+            </ion-item>
+            <div *ngIf="form.stripe">
+               <form #f="ngForm">
+                  <ion-list>
+                     <ion-item>
+                        <ion-label floating>Add Publish Kay</ion-label>
+                        <ion-input required type="email" [(ngModel)]="form.publish_key"  name="publish_key"></ion-input>
+                     </ion-item>
+                     <ion-item>
+                        <ion-label floating>Add Secert Key</ion-label>
+                        <ion-input required type="text" [(ngModel)]="form.secret_kay" name="secret_kay"></ion-input>
+                     </ion-item>
+                  </ion-list>
+               </form>
+            </div>
+
+            <ion-item style=" background-color:#f2f2f2; margin-bottom:4px" no-lines>
+               <ion-label style="font-size: 15px;">Banners</ion-label>
+            </ion-item>
+            <div *ngIf="banners" class="banners">
+               <ion-item class="banner-padding">
+                  <ion-thumbnail>
+                     <img src="{{banners[0]}}">
+                  </ion-thumbnail>
+                  <input style="padding-top: 5px" type="file" name="select Image" (change)="onChangeBanner($event, 0)">
+               </ion-item>
+               <ion-item class="banner-padding">
+                  <ion-thumbnail>
+                     <img src="{{banners[1]}}">
+                  </ion-thumbnail>
+                  <input style="padding-top: 5px" type="file" name="select Image" (change)="onChangeBanner($event, 1)" >
+               </ion-item>
+               <ion-item class="banner-padding">
+                  <ion-thumbnail>
+                     <img src="{{banners[2]}}">
+                  </ion-thumbnail>
+                  <input style="padding-top: 5px" type="file" name="select Image" (change)="onChangeBanner($event, 2)" >
+               </ion-item>
+            </div>
+        </ion-list>
+      </form>
+      <div style="margin:11px 3px 5px 3px;">
+         <button ion-button block color="secondary" [disabled]="disableSubmit" (click)="saveSetting()">Save</button>
+      </div>
+   </div>
+</ion-content>

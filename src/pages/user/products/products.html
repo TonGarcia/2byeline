@@ -1,0 +1,103 @@
+<!--
+   Generated template for the Products page.
+   
+   See http://ionicframework.com/docs/v2/components/#navigation for more info on
+   Ionic pages and navigation.
+   -->
+<ion-header>
+   <ion-navbar color="danger">
+      <button ion-button menuToggle>
+         <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title text-center>{{"Products" | translate}}</ion-title>
+   </ion-navbar>
+</ion-header>
+<ion-content class="products">
+<ion-spinner *ngIf="!productsList" name="crescent" style="display:block; margin-left: auto; margin-right:auto; margin-top: 5px; margin-bottom:5px" ></ion-spinner>
+   <div *ngIf=productsList class="prod">
+      <div *ngIf="productsList.length">
+         <div *ngIf="values.listview">
+            <ion-item no-lines class="item-name">
+               <ion-label text-uppercase>{{"Products" | translate}}</ion-label>
+               <button ion-button icon-only item-right clear color="shadow" (click)="setGridView()">
+                  <ion-icon ios="ios-grid" md="md-grid"></ion-icon>
+               </button>
+            </ion-item>
+            <ion-list *ngIf="productsList.length">
+               <ion-item *ngFor="let item of productsList" class="price-list">
+                  <ion-thumbnail item-left class="stock-list">
+                     <a (click)="getProductDetails(item.id)">
+                        <img src="{{item.downloadURL}}">
+                        <button ion-button color="danger" *ngIf="!item.in_stock">OUT OF STOCK</button>
+                     </a>
+                  </ion-thumbnail>
+                  <a color="dark" (click)="getProductDetails(item.id)">
+                     <div class="top">
+                        <h2  style="margin-top:6px; color:#4caeb6;">{{item.name}}</h2>
+                        <h3 style="color:#000;" class="max-lines">Description: {{item.short_description}}</h3>
+                     </div>
+                     <span class="bottom-left">
+                        <h3 style="color:#4caeb6;" *ngIf="!item.sale_price">{{1*item.regular_price | currency:values.currency:true:'1.2-2'}}</h3>
+                        <h3  style="color:#f53d3d;" *ngIf="item.sale_price">{{1*item.sale_price | currency:values.currency:true:'1.2-2'}}</h3>
+                        <h3 style="color:#000" *ngIf="item.sale_price"><del>{{1*item.regular_price | currency:values.currency:true:'1.2-2'}}</del></h3>
+                     </span>
+                  </a>
+                  <div class="bottom-right">
+                     <button ion-button [disabled]='!item.in_stock' style="margin: 0px" color="shadow" item-right outline text-uppercase *ngIf="service.proqty[item.id] == undefined || service.proqty[item.id] == 0" (click)="addToCart(item.id, item.name, item.downloadURL, item.regular_price, item.sale_price)">
+                     {{"Add" | translate}}
+                     </button>
+                     <button ion-button icon-only style="margin: 0px" item-right clear color="shadow" *ngIf="service.proqty[item.id] >= 1" (click)="deleteFromCart(item.id)">
+                     <ion-icon ios="ios-remove-circle-outline" md="ios-remove-circle-outline"></ion-icon>
+                     </button>
+                     <button ion-button item-right color="shadow" clear *ngIf="service.proqty[item.id] >= 1">{{service.proqty[item.id]}}</button>
+                     <button ion-button icon-only style="margin: 0px" item-right clear color="shadow" *ngIf="service.proqty[item.id] >= 1" (click)="addToCart(item.id, item.name, item.downloadURL, item.regular_price, item.sale_price)">
+                     <ion-icon ios="ios-add-circle-outline" md="ios-add-circle-outline"></ion-icon>
+                     </button>
+                  </div>
+               </ion-item>
+            </ion-list>
+         </div>
+         <div *ngIf="!values.listview">
+            <ion-item class="item-name">
+               <ion-label text-uppercase>{{"Products" | translate}}</ion-label>
+               <button ion-button icon-only item-right clear color="shadow" (click)="setListView()">
+                  <ion-icon ios="ios-list-box" md="ios-list-box"></ion-icon>
+               </button>
+            </ion-item>
+            <div class="card-background-page grid" *ngIf="productsList.length">
+               <ion-row class="row unlimited-items">
+                  <ion-col class="col" *ngFor="let item of productsList">
+                     <ion-card>
+                        <ion-card-content style="padding: 0px" class="stock">
+                           <a (click)="getProductDetails(item.id)">
+                              <button ion-button color="danger" *ngIf="!item.in_stock">OUT OF STOCK</button>
+                              <img src="{{item.downloadURL}}">
+                           </a>
+                        </ion-card-content>
+                        <ion-label style="font-weight:500; margin:8px 8px 0px;color:#4caeb6;"><strong>{{item.name}}</strong></ion-label>
+                        <ion-item no-padding class="price-list">
+                           <a (click)="getProductDetails(item.id)">
+                              <h3 style="margin-top: 0px; text-align: left" style="color:#4caeb6;" *ngIf="!item.sale_price">{{1*item.regular_price | currency:values.currency:true:'1.2-2'}}</h3>
+                              <h3 style="margin-top: 0px; text-align: left" style="color:#f53d3d;" *ngIf="item.sale_price">{{1*item.sale_price | currency:values.currency:true:'1.2-2'}}</h3>
+                              <h3 style="margin-top: 0px; text-align: left" style="color:#000" *ngIf="item.sale_price"><del>{{1*item.regular_price | currency:values.currency:true:'1.2-2'}}</del></h3>
+                           </a>
+                           <button ion-button [disabled]='!item.in_stock' style="margin: 0px" color="shadow" item-right clear text-uppercase *ngIf="service.proqty[item.id] == undefined || service.proqty[item.id] == 0" (click)="addToCart(item.id, item.name, item.downloadURL, item.regular_price, item.sale_price)">
+                           {{"Add" | translate}}
+                           </button>
+                           <button ion-button icon-only style="margin: 0px" item-right clear color="shadow" *ngIf="service.proqty[item.id] >= 1" (click)="deleteFromCart(item.id)">
+                           <ion-icon ios="ios-remove-circle-outline" md="ios-remove-circle-outline"></ion-icon>
+                           </button>
+                           <button ion-button item-right color="shadow" clear *ngIf="service.proqty[item.id] >= 1">{{service.proqty[item.id]}}</button>
+                           <button ion-button icon-only style="margin: 0px" item-right clear color="shadow" *ngIf="service.proqty[item.id] >= 1" (click)="addToCart(item.id, item.name, item.downloadURL, item.regular_price, item.sale_price)">
+                           <ion-icon ios="ios-add-circle-outline" md="ios-add-circle-outline"></ion-icon>
+                           </button>  
+                        </ion-item>
+                     </ion-card>
+                  </ion-col>
+               </ion-row>
+            </div>
+         </div>
+         <!-- end of drid view -->   
+      </div>
+   </div>
+</ion-content>

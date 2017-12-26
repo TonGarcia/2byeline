@@ -1,0 +1,71 @@
+<!--
+   Generated template for the AddProduct page.
+   
+   See http://ionicframework.com/docs/v2/components/#navigation for more info on
+   Ionic pages and navigation.
+   -->
+<ion-header>
+   <ion-navbar color="danger">
+      <ion-title text-center>Add Product</ion-title>
+   </ion-navbar>
+</ion-header>
+<ion-content class="add-product">
+   <div class="margin">
+      <form #f="ngForm">
+         <ion-list>
+            <ion-item>
+               <ion-label floating>Name* </ion-label>
+               <ion-input required type="text" [(ngModel)]="form.name" name="name"></ion-input>
+            </ion-item>
+            <ion-item style="padding-top:10px" class="option">
+               <ion-label>category</ion-label>
+               <ion-select [(ngModel)]="form.category"  name="category">
+               <ion-option *ngFor="let item of categoryName" value="{{item.id}}">{{item.name}}</ion-option>
+               </ion-select>
+            </ion-item>
+            <ion-item style="padding-top:10px" class="option">
+               <ion-label>Brand</ion-label>
+               <ion-select [(ngModel)]="form.brand" name="brand">
+               <ion-option *ngFor="let item of brandName" value="{{item.id}}">{{item.name}}</ion-option>
+               </ion-select>
+            </ion-item>
+            <ion-item style="padding-top:10px" class="option">
+               <ion-label>Vendor</ion-label>
+               <ion-select [(ngModel)]="form.vendor" name="vendor">
+               <ion-option *ngFor="let item of vendorName" value="{{item.id}}">{{item.name}}</ion-option>
+               </ion-select>
+            </ion-item>
+            <ion-item>
+               <ion-label floating>Regular Price</ion-label>
+               <ion-input required type="number" [(ngModel)]="form.regular_price" name="regular_price"></ion-input>
+            </ion-item>
+            <ion-item>
+               <ion-label floating>Sale Price</ion-label>
+               <ion-input required type="number" [(ngModel)]="form.sale_price" name="sale_price"></ion-input>
+            </ion-item>
+            <ion-item class="Instock">
+               <ion-label>InStock</ion-label>
+               <ion-toggle checked="true" [(ngModel)]="form.in_stock" name="in_stock"></ion-toggle>
+            </ion-item>
+            <ion-item>
+               <ion-label floating>Short Description</ion-label>
+               <ion-textarea  rows="4" required type="text" [(ngModel)]="form.short_description" name="short_description"></ion-textarea>
+            </ion-item>
+            <ion-item>
+               <ion-label floating>Description</ion-label>
+               <ion-textarea rows="4" required type="text" [(ngModel)]="form.description" name="description"></ion-textarea>
+            </ion-item>
+            <ion-item>
+               <ion-thumbnail>
+                  <img src="{{downloadURL}}">
+               </ion-thumbnail>
+               <input type="file" name="Choose File" (change)="onChange($event)">
+            </ion-item>
+         </ion-list>
+      </form>
+        <div class="error-message">
+           <ion-label color="danger" text-wrap>{{errorMessage}}</ion-label>
+        </div>
+      <button ion-button block color="secondary" [disabled]="disableSubmit" (click)="addProduct()">Save</button>
+   </div>
+</ion-content>

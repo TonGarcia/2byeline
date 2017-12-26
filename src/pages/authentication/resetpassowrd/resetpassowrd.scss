@@ -1,0 +1,47 @@
+.forgotten {
+    .error-message {
+        .label {
+            margin: 20px 8px 11px 16px;
+            font-size: 15px;
+            text-align: center;
+        }
+    }
+    .margin {
+        margin: 5px;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        min-height: 80%;
+    }
+    .button {
+        height: 2.8em;
+        width: 150px;
+        border-radius: 5px;
+        font-size: 13px;
+        margin: auto;
+    }
+    .text-input {
+        font-size: 15px;
+        color: #666;
+        text-align: center;
+    }
+    .item.item-label-floating .text-input {
+        margin: 8px 0 8px 16px;
+        font-size: 15px;
+        text-align: center;
+    }
+    h2 {
+        margin: 20px 15px;
+        font-size: 13px;
+        color: #999;
+        text-align: center;
+    }
+    .item .item-block .item-inner {
+        padding-right: 8px;
+        border-bottom: 0.55px solid #f3f2f7;
+    }
+    .item-input ion-input,
+    .item-input ion-textarea {
+        border-bottom: solid 1px #dcdcdc;
+    }
+}

@@ -1,0 +1,23 @@
+.category {
+    .row.unlimited-items {
+        flex-wrap: wrap;
+    }
+    .row.unlimited-items .col {
+        flex: none;
+        width: 100%;
+        overflow: hide;
+        padding: 1px 2px 1px 1px;
+    }
+    .grid {
+        ion-row {
+            margin: 0px;
+        }
+        button {
+            width: 100%;
+            height: 80px;
+            // background: #00c6ff;
+            //background: -webkit-linear-gradient(to top, #00c6ff , #0072ff); 
+            // background: linear-gradient(to top, #00c6ff , #0072ff);
+        }
+    }
+}

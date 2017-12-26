@@ -1,0 +1,63 @@
+<!--
+   Generated template for the ProductList page.
+   
+   See http://ionicframework.com/docs/v2/components/#navigation for more info on
+   Ionic pages and navigation.
+   -->
+<ion-header>
+   <ion-navbar color="danger">
+      <button ion-button menuToggle>
+         <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title text-center>Products</ion-title>
+   </ion-navbar>
+</ion-header>
+<ion-content class="product-list">
+   <ion-spinner *ngIf="!productList" name="crescent" style="display:block; margin-left: auto; margin-right:auto; margin-top: 5px; margin-bottom:5px" ></ion-spinner>
+   <div>
+      <div *ngIf="productList">
+         <ion-list *ngIf="productList.length"  class="margin">
+            <ion-item *ngFor="let item of productList" class="prod-list">
+               <ion-thumbnail item-left (click)="getProducts(item.id)">
+                  <img src="{{item.downloadURL}}">
+               </ion-thumbnail>
+               <div >
+                  <ion-row>
+                     <ion-col>
+                        <h2>{{item.name}}</h2>
+                     </ion-col>
+                  </ion-row>
+                  <h2>
+                     <span *ngIf="!item.sale_price"><span color="shadow">Price:{{1*item.regular_price | currency:values.currency:true:'1.2-2'}}</span></span>
+                  </h2>
+                  <h2>
+                     <span *ngIf="item.sale_price"><span color="shadow">Sale Price:{{1*item.sale_price | currency:values.currency:true:'1.2-2'}}</span></span>
+                  </h2>
+                  <h2>
+                     <span primary *ngIf="item.sale_price"><del><span color="danger">Price: {{1*item.regular_price | currency:values.currency:true:'1.2-2'}}</span></del></span>
+                  </h2>
+               </div>
+               <ion-row>
+                  <ion-col width-50 style="text-align:left; padding-right:0px">
+                     <button ion-button icon-left clear color="shadow" text-uppercase (click)="edit(item)">
+                        <ion-icon ios="ios-create" md="md-create"></ion-icon>
+                        Edit
+                     </button>
+                  </ion-col>
+                  <ion-col width-50 text-right>
+                     <button ion-button icon-right clear color="shadow" text-uppercase (click)="deleteProduct(item.id)">
+                        <ion-icon style="padding-right:8px" color="shadow" ios="ios-trash" md="md-trash"></ion-icon>
+                        Delete
+                     </button>
+                  </ion-col>
+               </ion-row>
+            </ion-item>
+         </ion-list>
+      </div>
+   </div>
+   <ion-fab right bottom>
+      <button ion-fab mini  (click)="add()">
+         <ion-icon name="add"></ion-icon>
+      </button>
+   </ion-fab>
+</ion-content>

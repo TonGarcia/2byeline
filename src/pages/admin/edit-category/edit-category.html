@@ -1,0 +1,35 @@
+<!--
+   Generated template for the EditCategory page.
+   
+   See http://ionicframework.com/docs/v2/components/#navigation for more info on
+   Ionic pages and navigation.
+   -->
+<ion-header>
+   <ion-navbar color="danger">
+      <ion-title text-center>Edit Category</ion-title>
+   </ion-navbar>
+</ion-header>
+<ion-content class="edit-category">
+   <div *ngIf="category" class="margin">
+      <ion-list>
+         <ion-item>
+            <ion-label floating>Name*</ion-label>
+            <ion-input required type="text" [(ngModel)]="category.name" name="name"></ion-input>
+         </ion-item>
+         <ion-item>
+            <ion-label floating>Description</ion-label>
+            <ion-textarea rows="4" required type="text" [(ngModel)]="category.description" name="description"></ion-textarea>
+         </ion-item>
+         <ion-item>
+            <ion-thumbnail>
+               <img src="{{category.downloadURL}}">
+            </ion-thumbnail>
+            <input type="file" name="select Image" (change)="onChange($event)" >
+         </ion-item>
+      </ion-list>
+      <div class="error-message">
+           <ion-label color="danger" text-wrap>{{errorMessage}}</ion-label>
+      </div>
+      <button ion-button block color="secondary" [disabled]="disableSubmit" (click)="saveCategory()">Save</button>
+   </div>
+</ion-content>

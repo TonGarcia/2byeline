@@ -1,0 +1,93 @@
+.home {
+
+font-family: arial;
+
+.card-md ion-card-content {
+    padding: 0px;
+}
+
+ion-card{
+  margin: 0px;
+  width: 100%;
+}
+
+.scroll-content {
+    padding-bottom: 10px;
+    margin-top: 40px;
+}
+
+.shop-name{
+  .item{
+   background-color: #f4f4f4;
+  }
+}
+
+.item.item-block .item-inner {
+    padding-right: 8px;
+    border-bottom: none;
+}
+
+p {
+  margin: 20px 0;
+  line-height: 22px;
+  font-size: 16px;
+}
+
+.row.unlimited-items {
+  flex-wrap: wrap;
+  padding-left: 5px;
+}
+
+.row.unlimited-items .col{
+  flex: none;
+  width: 50%;
+  padding: 5px 5px 0 0;
+}
+
+.card-background-page {
+
+  ion-card {
+    position: relative;
+    text-align: center;
+    margin: 0;
+    width: 100%;
+  }
+
+  .card-title {
+    position: absolute;
+    top: 36%;
+    font-size: 1.0em;
+    width: 100%;
+    font-weight: bold;
+    color: #fff;
+  }
+
+  .card-subtitle {
+    font-size: 1.0em;
+    position: absolute;
+    top: 52%;
+    width: 100%;
+    color: #fff;
+  }
+}
+
+}
+
+.badge {
+  position: absolute;
+  top: -8%;
+  right: 4%;
+  right: calc(10% - 5px);
+  padding: 1px 6px;
+  height: auto;
+  font-size: 12px;
+  line-height: 16px;
+  }
+
+ion-icon[item-left] + .item-inner {
+    margin-left: 0px;
+}  
+
+.searchbar-md {
+    margin-bottom: 0;
+}

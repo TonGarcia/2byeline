@@ -1,0 +1,89 @@
+<!--
+   Generated template for the Order page.
+   
+   See http://ionicframework.com/docs/components/#navigation for more info on
+   Ionic pages and navigation.
+   -->
+<ion-header>
+   <ion-navbar color="danger">
+      <ion-title text-center>Order Details</ion-title>
+   </ion-navbar>
+</ion-header>
+<ion-content class="order-info">
+   <ion-spinner *ngIf="!orderDetails" name="crescent" style="display:block; margin-left: auto; margin-right:auto; margin-top: 5px; margin-bottom:5px" ></ion-spinner>
+
+<div *ngIf="orderDetails">
+<ion-list padding class="items">
+  <ion-item *ngFor="let item of orderDetails.items">
+    <ion-thumbnail item-start>
+      <img src="{{item.image}}">
+    </ion-thumbnail>
+    <h2>{{item.name}}</h2>
+    <p>Price: {{item.price | currency:values.currency:true:'1.2-2'}}</p>
+    <p>Quantity: {{item.quantity}}</p>
+    <h2>Subtotal: {{1*item.price*item.quantity | currency:values.currency:true:'1.2-2'}}</h2>
+  </ion-item>
+</ion-list>
+
+
+
+
+      <ion-item style="background-color: #f4f4f4;">
+         <h1 style="margin: 0px">Product Details </h1>
+      </ion-item>
+      <ion-list style="margin:0;">
+         <ion-row class="label">
+            <ion-col width-75>
+               <ion-label no-margin><b>Totals</b></ion-label>
+            </ion-col>
+            <ion-col width-25 text-right>
+               <ion-label no-margin><b>{{1*orderDetails.total | currency:values.currency:true:'1.2-2'}}</b></ion-label>
+            </ion-col>
+         </ion-row>
+         <ion-item style="background-color: #f4f4f4;">
+            <h1 style="margin: 0px">Payment </h1>
+         </ion-item>
+         <ion-row class="label">
+            <ion-col width-75>
+               <ion-label no-margin>Payment Type:</ion-label>
+            </ion-col>
+            <ion-col width-25 text-right>
+               <ion-label no-margin>{{orderDetails.payments.PaymentType}}</ion-label>
+            </ion-col>
+         </ion-row>
+         <ion-row class="label" *ngIf="orderDetails.payments.id">
+            <ion-col width-75>
+               <ion-label no-margin>Transaction Id:</ion-label>
+            </ion-col>
+            <ion-col width-25 text-right>
+               <ion-label no-margin>{{orderDetails.payments.id}}</ion-label>
+            </ion-col>
+         </ion-row>
+         <ion-row class="label" *ngIf="orderDetails.payments.status">
+            <ion-col width-75>
+               <ion-label no-margin>Payment Status::</ion-label>
+            </ion-col>
+            <ion-col width-25 text-right>
+               <ion-label no-margin>{{orderDetails.payments.status}}</ion-label>
+            </ion-col>
+         </ion-row>
+         <ion-row class="label" *ngIf="orderDetails.payments.amount">
+            <ion-col width-75>
+               <ion-label no-margin>Charged Amount:</ion-label>
+            </ion-col>
+            <ion-col width-25 text-right>
+               <ion-label no-margin>{{orderDetails.payments.amount}}</ion-label>
+            </ion-col>
+         </ion-row>
+         <ion-item style="background-color: #f4f4f4;">
+            <h1 style="margin: 0px">Customer Details </h1>
+         </ion-item>
+         <h2 style="margin:11px 0 4px 13px; font-weight: normal;">Name:{{orderDetails.customerDetails.displayName}}</h2>
+         <h2 style="margin:11px 0 4px 13px; font-weight: normal;"> Email Id: {{orderDetails.customerDetails.email}}</h2>
+         <h2 style="margin:11px 0 4px 13px; font-weight: normal;"> Phone Number: {{orderDetails.customerDetails.phone}}</h2>
+         <h2 style="margin:11px 0 4px 13px; font-weight: normal;">Address: {{orderDetails.customerDetails.address}}</h2>
+         <h2 style="margin:11px 0 4px 13px; font-weight: normal;">Date: {{orderDetails.timeStamp | date}}</h2>
+      </ion-list>
+      <br>
+   </div>
+</ion-content>

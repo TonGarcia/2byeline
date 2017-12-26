@@ -1,16 +1,6 @@
 // Ionic Variables and Theming. For more info, please see:
-// http://ionicframework.com/docs/theming/
-
-// Font path is used to include ionicons,
-// roboto, and noto sans fonts
+// http://ionicframework.com/docs/v2/theming/
 $font-path: "../assets/fonts";
-
-
-// The app direction is used to include
-// rtl styles in your app. For more info, please see:
-// http://ionicframework.com/docs/theming/rtl-support/
-$app-direction: ltr;
-
 
 @import "ionic.globals";
 
@@ -20,10 +10,10 @@ $app-direction: ltr;
 // To customize the look and feel of this app, you can override
 // the Sass variables found in Ionic's source scss files.
 // To view all the possible Ionic variables, see:
-// http://ionicframework.com/docs/theming/overriding-ionic-variables/
-
-
-
+// http://ionicframework.com/docs/v2/theming/overriding-ionic-variables/
+  
+  $text-color:        #000;
+  $background-color:  #fff;
 
 // Named Color Variables
 // --------------------------------------------------
@@ -34,18 +24,58 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #488aff,
+  primary:    #387ef5,
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+
+  shadow:     #387ef5,
+  shadowlite: #daeff1,
+
+
+  darkpink:     #bf4080,
+  darkpinklite: #f9ebf2,
+  skyblue:      #00b0e6,
+  green:        #00cc7a,
+  blue:         #0066ff,
+  purple:       #b300b3,
+  red:          #f53d3d,
+  grey:         #595959,
+  energized:    #ffc900,
+  jioblue:      #50b7c0,
+  jiobluelite:  #daeff1,
+
+ 
 );
+
+$shadow: #50b7c0;
+$shadowlite: #daeff1;
+
+
 
 
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
 
+.file-upload {
+  position: relative;
+  overflow: hidden;
+  margin: 10px;
+}
+
+.file-upload input.file-input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
 
 
 
@@ -76,7 +106,7 @@ $colors: (
 // Ionicons
 // --------------------------------------------------
 // The premium icon font for Ionic. For more info, please see:
-// http://ionicframework.com/docs/ionicons/
+// http://ionicframework.com/docs/v2/ionicons/
 
 @import "ionic.ionicons";
 

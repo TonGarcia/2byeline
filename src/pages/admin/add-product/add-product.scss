@@ -1,0 +1,87 @@
+.add-product {
+    .error-message {
+        .label {
+            font-size: 15px;
+            text-align: center;
+            color: #f53d3d;
+        }
+    }
+    .margin {
+        margin: 5px;
+    }
+    .list-ios > .item-block:first-child,
+    .list-md > .item-block:first-child {
+        border-top: none;
+    }
+    .list-ios .item-block .item-inner,
+    .list-md .item-block .item-inner {
+        border-bottom: 0.55px solid #f2f2f2;
+        padding: 0;
+    }
+    .list-ios > .item-block:last-child,
+    .list-md > .item-block:last-child {
+        border-bottom: none;
+    }
+    .select-text {
+        min-width: 16px;
+        font-size: 14px;
+    }
+    .label-ios,
+    .label-md,
+    .label-wp {
+        margin: 5px 8px;
+        font-size: 15px;
+    }
+    .item.item-label-floating .text-input {
+        margin: 0 0 8px 8px;
+        font-size: 15px;
+    }
+    .label[floating] {
+        font-size: 14px;
+        color: #999;
+        margin-bottom: 5px;
+    }
+    .item {
+        padding: 0px;
+    }
+    h2 {
+        font-weight: normal;
+        color: #c44f8a;
+    }
+    .toggle-ios .toggle-checked,
+    .toggle-md .toggle-checked,
+    .toggle-wp .toggle-checked {
+        background-color: $shadow;
+    }
+    .toggle-md .toggle-checked .toggle-inner {
+        background-color: #d8dbe0;
+    }
+    .item-md.item-toggle ion-label,
+    .item-wp.item-toggle ion-label {
+        margin-left: 16px;
+    }
+    .label-wp[floating] {
+        margin: 0 0 8px 16px;
+    }
+    .item-wp.item-label-floating .text-input {
+        margin: 0 0 8px 8px;
+        font-size: 15px;
+    }
+    .item-wp.item-select ion-label {
+        margin-left: 16px;
+    }
+    .item-label-floating ion-datetime {
+        padding: 8px 0 8px 8px;
+        width: 100%;
+    }
+    .date {
+        .label-wp[floating] {
+            margin: 8px 8px 0px 8px;
+        }
+    }
+    .Instock {
+        ion-label {
+            color: #999;
+        }
+    }
+}

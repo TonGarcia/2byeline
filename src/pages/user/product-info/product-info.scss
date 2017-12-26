@@ -1,0 +1,150 @@
+  .product {
+
+font-family: arial;
+
+.item{
+  padding:0px;
+}
+ion-label{
+  margin: 8px 12px;
+      font-size: 1.4rem;
+  font-family: Arial;
+  
+}
+.text{
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+.font{
+    font-size: 1.4rem;
+}
+
+.button .button-inner {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: $shadow;
+    font-size: 15px;
+}
+
+scroll-content{
+  padding-bottom: 52px;
+}
+
+.item-button {
+    padding: 0px;
+    height: 25px;
+    font-size: 1.2rem;
+}
+
+.price-list{
+  
+  h3{
+  margin-top: 0px
+  }
+
+  padding-left: 10px;
+
+  ion-label{
+  margin: 0px;
+  text-align: center;
+  }
+  button{
+  margin: 0px;
+  }
+
+}
+    .row.unlimited-items {
+      flex-wrap: wrap;
+    }
+
+    .row.unlimited-items .col{
+      flex: none;
+      width: 33%;
+    }
+
+.grid {
+
+    ion-row {
+      margin: 20px 0;
+    }
+
+    a[light] {
+      width: 100%;
+      height: 100px;
+    }
+
+  }
+
+  .badge {
+    position: absolute;
+    top: -8%;
+    right: 4%;
+    right: calc(10% - 5px);
+    padding: 1px 6px;
+    height: auto;
+    font-size: 12px;
+    line-height: 16px;
+    background-color: #fff;
+    color: #000;
+    }
+
+
+  .card-background-page {
+
+    ion-card {
+      position: relative;
+      text-align: center;
+      margin: 0;
+      width: 100%;
+    }
+
+    .card-title {
+      position: absolute;
+      top: 36%;
+      font-size: 1.0em;
+      width: 100%;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .card-subtitle {
+      font-size: 1.0em;
+      position: absolute;
+      top: 52%;
+      width: 100%;
+      color: #fff;
+    }
+
+  }  
+   .ion-label{
+    margin: 0px 0px 9px 0px;
+    }
+    button{
+    margin: 0px 0px 9px 0px;
+    text-transform: none;
+   }
+
+
+   .reviews{
+     margin: 5px;
+     border-bottom: 1px solid #edecf1;
+
+   }
+
+   .item p {
+     color: black;
+     font-size: 13px;
+     }
+
+  del {
+    text-decoration: line-through;
+    color: black;
+  }    
+  .item.item-block .item-inner {
+    padding-right: 8px;
+    border-bottom: none;
+  }
+
+  }

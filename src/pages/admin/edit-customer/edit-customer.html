@@ -1,0 +1,44 @@
+<!--
+   Generated template for the EditCustomer page.
+   
+   See http://ionicframework.com/docs/v2/components/#navigation for more info on
+   Ionic pages and navigation.
+   -->
+<ion-header>
+   <ion-navbar color="danger">
+      <ion-title text-center>Edit Customer</ion-title>
+   </ion-navbar>
+</ion-header>
+<ion-content class="customer">
+   <div *ngIf="customer" class="margin">
+      <ion-list>
+         <ion-item>
+            <ion-label floating>First Name*</ion-label>
+            <ion-input required type="text" [(ngModel)]="customer.displayName" name="firstname"></ion-input>
+         </ion-item>
+         <ion-item>
+            <h3>Email: {{customer.email}}</h3>
+         </ion-item>
+         <ion-item>
+            <ion-label floating>Phone no</ion-label>
+            <ion-input type="number" [(ngModel)]="customer.phone" name="phone" ></ion-input>
+         </ion-item>
+         <ion-item>
+            <ion-label floating>Address</ion-label>
+            <ion-input type="text" [(ngModel)]="customer.address" name="address" ></ion-input>
+         </ion-item>
+         <ion-item style="padding-top:10px;padding-bottom: 5px;">
+               <ion-label floatingy>Role</ion-label>
+                  <ion-select [(ngModel)]="customer.role" name="roll">
+                     <ion-option value="Vendor">Vendor</ion-option>
+                     <ion-option value="Customer">Customer</ion-option>
+                     <ion-option value="Admin">Admin</ion-option>
+                  </ion-select>
+            </ion-item>
+      </ion-list>
+       <div class="error-message">
+           <ion-label color="danger" text-wrap>{{errorMessage}}</ion-label>
+       </div>
+      <button ion-button block color="secondary" [disabled]="disableSubmit" (click)="saveCustomer()">Save</button>
+   </div>
+</ion-content>

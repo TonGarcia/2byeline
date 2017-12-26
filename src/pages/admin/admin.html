@@ -1,0 +1,52 @@
+<!--
+   Generated template for the Admin page.
+   
+   See http://ionicframework.com/docs/v2/components/#navigation for more info on
+   Ionic pages and navigation.
+   -->
+<ion-header>
+   <ion-navbar color="danger">
+      <ion-title text-center>Admin</ion-title>
+   </ion-navbar>
+</ion-header>
+<ion-content>
+<ion-card>
+      <ion-list inset>
+         <ion-item tappable (click)="categoryList()">
+               <ion-icon name="card" item-start item-start></ion-icon>
+               Category List
+               <ion-icon name="ios-arrow-forward" style="color: #e6e6e6" item-end></ion-icon>
+         </ion-item>
+         <ion-item tappable (click)="productsList()">
+               <ion-icon name="logo-buffer" item-start></ion-icon>
+               Product List
+               <ion-icon name="ios-arrow-forward" style="color: #e6e6e6" item-end></ion-icon>
+         </ion-item>
+         <ion-item tappable (click)="customerList()">
+               <ion-icon name="people" item-start item-start></ion-icon>
+               Customer List
+               <ion-icon name="ios-arrow-forward" style="color: #e6e6e6" item-end></ion-icon>
+         </ion-item>
+         <ion-item tappable (click)="orderList()">
+               <ion-icon name="md-reorder" md="md-list" item-start></ion-icon>
+               Order List
+               <ion-icon name="ios-arrow-forward" style="color: #e6e6e6" item-end></ion-icon>
+         </ion-item>
+         <ion-item tappable (click)="brandList()">
+               <ion-icon name="md-reorder" md="md-list" item-start></ion-icon>
+               Brand 
+               <ion-icon name="ios-arrow-forward" style="color: #e6e6e6" item-end></ion-icon>
+         </ion-item>
+         <ion-item tappable (click)="vendorList()">
+               <ion-icon name="md-reorder" md="md-list" item-start></ion-icon>
+               Vandor List
+               <ion-icon name="ios-arrow-forward" style="color: #e6e6e6" item-end></ion-icon>
+         </ion-item>
+         <ion-item tappable (click)="setting()">
+               <ion-icon name="ios-cog" item-start></ion-icon>
+               Settings
+               <ion-icon name="ios-arrow-forward" style="color: #e6e6e6" item-end></ion-icon>
+         </ion-item>
+      </ion-list>
+      </ion-card>
+</ion-content>

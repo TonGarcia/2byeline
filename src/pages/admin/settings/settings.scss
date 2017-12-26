@@ -1,0 +1,52 @@
+page-settings {
+    .banners {
+        .label {
+            margin-bottom: 0px;
+        }
+    }
+    .item ion-thumbnail img {
+        width: auto;
+        height: 120px;
+    }
+    .list {
+        margin: 0px;
+    }
+    .banner-padding {
+        padding: 5px;
+    }
+}
+.alert-md .alert-title {
+    font-size: 22px;
+    text-align: center;
+    color: #ca341a;
+}
+.alert-md .alert-button {
+    position: sticky;
+    overflow: hidden;
+    margin: 0 8px 0 0;
+    padding: 10px;
+    border-radius: 2px;
+    font-weight: 500;
+    text-align: left;
+    text-transform: uppercase;
+    color: #ca341a;
+    background-color: transparent;
+    margin-right: 50px;
+}
+.alert-md .alert-head {
+    padding: 14px;
+}
+.item.item-block .item-inner {
+    padding-right: 8px;
+    border-bottom: 0px;
+}
+.list .item[no-lines],
+.list-md .item[no-lines] .item-inner {
+    border-width: 0;
+}
+.list-ios > .item-block:first-child {
+    border-top: 0px solid #c8c7cc;
+}
+.item {
+    font-size: 1.4rem;
+}

@@ -1,0 +1,102 @@
+.post {
+    .post-title {
+        text-indent: 7px;
+        text-align: justify;
+        padding: 5px;
+        font-family: 'Open Sans Semi Bold', sans-serif;
+        font-size: 20px;
+        margin: 2px 0px;
+    }
+    .post ion-avatar {
+        padding-left: 0px;
+    }
+    .scroll-content {
+        padding-top: 5px;
+    }
+    video {
+        width: 100%;
+        height: auto;
+    }
+    img {
+        width: 100%;
+        height: auto;
+    }
+    audio {
+        width: 100%;
+    }
+    ion-label {
+        margin: 0;
+    }
+    .item ion-avatar img {
+        max-width: 5rem;
+        max-height: 5rem;
+        min-width: 5rem;
+        min-height: 5rem;
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50px;
+    }
+    ion-card-content {
+        margin: 0;
+        padding: 0px;
+        h1, h2, h3, h4, h5, h6, dt {
+            margin: 0 16px;
+            font-size: 14px;
+            font-weight: normal;
+            color: #000;
+            text-indent: 50px;
+            text-align: justify;
+        }
+        dt {
+            margin: 0 16px;
+            font-size: 14px;
+        }
+    }
+    .card-ios p,
+    .card-ios li {
+        margin: 10px 16px;
+        font-size: 13px;
+        color: #000;
+        -webkit-margin-start: 30px;
+    }
+    .label-ios[floating] {
+        margin-bottom: 0;
+        font-size: 14px;
+    }
+    .item-input ion-input {
+        font-size: 14px;
+    }
+    .margin {
+        margin: 10px 12px;
+    }
+    .comment {
+        border: 0.5px solid rgba(234, 233, 233, 0.36);
+        padding: 16px;
+        ion-card-content {
+            margin: 0;
+        }
+    }
+    .date {
+        padding-bottom: 5px;
+    }
+    .author-name {
+        padding-top: 7px;
+    }
+    ion-icon[item-left] {
+        margin: 0;
+        margin-right: 5px;
+        color: orange;
+        font-size: small;
+    }
+    .sharedaddy {
+        display: none;
+    }
+    a {
+        display: none;
+        pointer-events: none;
+        cursor: default;
+    }
+    .hotel-stay-cotent{
+     display: none;
+    }
+}
