@@ -21,13 +21,13 @@ export class MyApp {
   constructor(public platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public push: Push, public alertCtrl: AlertController, public values: Values, public translateService: TranslateService) {
 
     // Copy your firebase credencial here
-       firebase.initializeApp({
-       apiKey: "",
-        authDomain: "",
-        databaseURL: "",
-        projectId: "",
-        storageBucket: "",
-        messagingSenderId: ""
+    firebase.initializeApp({
+       apiKey: "AIzaSyAI4nKBcitR1zDruJUI0_YD5KvhxEHj_qM",
+       authDomain: "v2byeline.firebaseapp.com",
+       databaseURL: "https://v2byeline.firebaseio.com",
+       projectId: "v2byeline",
+       storageBucket: "v2byeline.appspot.com",
+       messagingSenderId: "423889102045"
     });
 
     platform.ready().then(() => {
@@ -48,13 +48,13 @@ export class MyApp {
             if(snapshot.val()){
                 this.values.userRole = snapshot.val().role;
             }
-          
+
           });
-          
+
         }
       });
   }
- 
+
   pushsetup() {
     const options: PushOptions = {
      android: {
@@ -67,9 +67,9 @@ export class MyApp {
      },
      windows: {}
   };
- 
+
   const pushObject: PushObject = this.push.init(options);
- 
+
   pushObject.on('notification').subscribe((notification: any) => {
     if (notification.additionalData.foreground) {
       let youralert = this.alertCtrl.create({
@@ -79,12 +79,12 @@ export class MyApp {
       youralert.present();
     }
   });
- 
+
   pushObject.on('registration').subscribe((registration: any) => {
      //do whatever you want with the registration ID
-     
+
   });
- 
+
   pushObject.on('error').subscribe(error => alert('Error with Push plugin' + error));
 }
 }

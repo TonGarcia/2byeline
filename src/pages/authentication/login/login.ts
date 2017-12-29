@@ -28,7 +28,7 @@ export class LoginPage {
 
   error: any;
   zone: NgZone;
-  form: any; 
+  form: any;
   userProfile: any = null;
   isLoggedIn: boolean = false;
   customerList:any;
@@ -45,9 +45,9 @@ export class LoginPage {
   HeaderText: any ="Login";
   // errorPhoneMessage: any;
  //public recaptchaVerifier: firebase.auth.RecaptchaVerifier;
- 
+
   constructor(public nav: NavController, public navParams: NavParams, public functions: Functions, public auth: Auth, public loadingCtrl: LoadingController, private twitter: TwitterConnect, private fb: Facebook, private googlePlus: GooglePlus, public alertCtrl:AlertController, public values:Values,  public service: Service) {
-    
+
     //this.role = "Customer";
     this.currentUser = firebase.auth().currentUser;
 
@@ -56,14 +56,14 @@ export class LoginPage {
        this.userProfiles = snapshot.val();
 
       });
-    } 
+    }
 
 
     this.form = {};
     this.auth = auth;
-    this.customerList = firebase.database().ref('/Customer-List'); 
+    this.customerList = firebase.database().ref('/Customer-List');
     this.zone = new NgZone({});
-  
+
   }
 
 
@@ -76,6 +76,16 @@ export class LoginPage {
     this.HeaderText = "Login";
     this._showSignup = false;
   }
+
+  loginUser(): void {
+  this.googlePlus.login({
+    'webClientId': '423889102045-mob7ltd45abelvhgfroogq0osattmjq0.apps.googleusercontent.com',
+    'offline': true
+  }).then( res => {            firebase.auth().signInWithCredential(firebase.auth.GoogleAuthProvider.credential(res.idToken))
+    .then( success => {
+      console.log("Firebase success: " + JSON.stringify(success));
+    }).catch( error => console.log("Firebase failure: " + JSON.stringify(error)));
+  }).catch(err => console.error("Error: ", err));   }
 
   //EMAIL AND PASSWORD LOGIN
 
@@ -96,7 +106,7 @@ export class LoginPage {
             if(snapshot.val()){
               this.values.userRole = snapshot.val().role;
             }
-            
+
           });
 
         }).catch(err => {this.handleError(err)});
@@ -140,7 +150,7 @@ export class LoginPage {
           this.values.userRole = firebase.database().ref('/Customer-Role').child(this.userProfile.uid).on('value', snapshot =>{
             if(snapshot.val()){
               this.values.userRole = snapshot.val().role;
-            } 
+            }
           });
 
            // this.nav.push('ShopPage');
@@ -174,7 +184,7 @@ export class LoginPage {
           this.values.userRole = firebase.database().ref('/Customer-Role').child(this.userProfile.uid).on('value', snapshot =>{
             if(snapshot.val()){
               this.values.userRole = snapshot.val().role;
-            } 
+            }
           });
          //this.nav.push('ShopPage');
           console.log(this.userProfile);
@@ -188,11 +198,11 @@ export class LoginPage {
     });
   }
 
-  //GOOGLE LOGIN 
+  //GOOGLE LOGIN
 
   gmailLogin(){
-    
-     
+
+
       this.googlePlus.login({
         'scopes': '', // optional, space-separated list of scopes, If not included or empty, defaults to `profile` and `email`.
         'webClientId': '456352511209-qmma51oquif9u5msldo4u90ra83kdtfo.apps.googleusercontent.com', // optional clientId of your Web application from Credentials settings of your project - On Android, this MUST be included to get an idToken. On iOS, it is not required.
@@ -216,7 +226,7 @@ export class LoginPage {
          this.values.userRole = firebase.database().ref('/Customer-Role').child(this.userProfile.uid).on('value', snapshot =>{
             if(snapshot.val()){
               this.values.userRole = snapshot.val().role;
-            } 
+            }
           });
         // this.nav.push('ShopPage');
         }).catch( error =>{
@@ -229,7 +239,7 @@ export class LoginPage {
         this.functions.showAlert('Error', err);
          console.error("Error: ", err);
         });
-    
+
   }
 
 
@@ -268,17 +278,17 @@ export class LoginPage {
 
         this.currentUser = firebase.auth().currentUser;
 
-   
+
           this.service.getUserProfile(this.currentUser.uid).on('value', (snapshot) =>{
            this.userProfiles = snapshot.val();
 
-        
+
       });
-        
+
         this.disableRegister = false;
         this.buttonText = "Register Account";
       }).catch(err => {this.handleRegisterError(err)});
-    } 
+    }
   }
   handleRegisterError(err){
     console.log(err.code);
@@ -308,7 +318,7 @@ export class LoginPage {
 
  /* ionViewDidLoad() {
     this.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
-  } 
+  }
 
   signIn(phoneNumber: number){
   document.getElementById('recaptcha-container').innerHTML = "";

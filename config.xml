@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>byeline</name>
+    <name>cart-test</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
     <content src="index.html" />
@@ -83,4 +83,22 @@
     <plugin name="cordova-plugin-ionic-webview" spec="^1.1.11" />
     <plugin name="cordova-plugin-x-socialsharing" spec="^5.2.1" />
     <plugin name="cordova-plugin-nativestorage" spec="^2.2.2" />
+    <plugin name="cordova-plugin-googleplus" spec="^5.1.1">
+        <variable name="REVERSED_CLIENT_ID" value="423889102045-mob7ltd45abelvhgfroogq0osattmjq0.apps.googleusercontent.com" />
+    </plugin>
+    <plugin name="cordova-plugin-facebook4" spec="^1.9.1">
+        <variable name="APP_ID" value="1858204527781194" />
+        <variable name="APP_NAME" value="ByeLine" />
+    </plugin>
+    <plugin name="twitter-connect-plugin" spec="^0.6.0">
+        <variable name="FABRIC_KEY" value="22e52b651977bf4dc8f239e306c474402245853a" />
+    </plugin>
+    <preference name="TwitterConsumerKey" value="l1VlEI2xLoWdLCLnqiQWWrQG0" />
+    <preference name="TwitterConsumerSecret" value="YsRgLuiBp5eZ7lehstqfQls2Q1wId3ZGyW2xR0z0dJd9ZTgcah" />
+    <plugin name="cordova-plugin-stripe" spec="^1.5.3" />
+    <plugin name="com.paypal.cordova.mobilesdk" spec="^3.5.0" />
+    <engine name="android" spec="~7.0.0" />
+    <plugin name="phonegap-plugin-push" spec="^2.1.2">
+        <variable name="FCM_VERSION" value="11.0.1" />
+    </plugin>
 </widget>

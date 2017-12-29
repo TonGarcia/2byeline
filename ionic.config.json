@@ -1,6 +1,6 @@
 {
-  "name": "byeline",
-  "app_id": "e3e64923",
+  "name": "cart-test",
+  "app_id": "",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}
