@@ -1,4 +1,4 @@
-.products {
+page-brand-products {
 
 .item-name {
   box-shadow: 0 0.5px 1px rgba(0, 0, 0, 0.3);
@@ -46,24 +46,6 @@ ion-card{
   }
 }
 
-  .price-lists{
-     h3{
-  margin-top: 0px
-  }
-
-  padding-left: 10px;
- // padding-bottom: 3px;
-
-  ion-label{
-  margin: 0 0 0 16px;
-  white-space: inherit;
-  }
-
-  button{
-  margin: 0px 0px 9px 0px;
-  }
-  }
-
   .quantity{
     margin-right: 8px;
   }
@@ -78,7 +60,6 @@ ion-card{
   }
 
     .grid {
-      padding: 0px;
 
     ion-row {
       margin: 0;

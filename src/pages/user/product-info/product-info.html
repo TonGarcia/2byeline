@@ -14,7 +14,45 @@
 </ion-header>
 <ion-content class="product">
    <ion-spinner *ngIf="!productDetails" name="crescent" style="display:block; margin-left: auto; margin-right:auto; margin-top: 5px; margin-bottom:5px" ></ion-spinner>
-   <div *ngIf="productDetails" style="margin-bottom:40px">
+
+      <div *ngIf="productDetails" style="margin-bottom:40px">
+      <img src="{{productDetails.downloadURL}}">
+      <ion-label style="margin-bottom:0px" color="shadow" text-center>
+         <strong text-capitalize class="product-name">{{productDetails.name}}</strong>
+      </ion-label>
+       <ion-row class="price-padding">
+         <ion-col>
+             <div style="font-size:15px;color:red" *ngIf="productDetails.sale_price"> Sale Price $: {{productDetails.sale_price}}</div>
+         </ion-col>
+         <ion-col text-right>
+            <div style="font-size:15px;color:green" *ngIf="!productDetails.sale_price">Regular Price $: {{productDetails.regular_price}}</div>
+            <div style="font-size:15px;color:green" *ngIf="productDetails.sale_price"><del>Regular Price $: {{productDetails.regular_price}}</del></div>
+         </ion-col>
+      </ion-row>
+      <!--ion-item  no-lines class="pad"  text-wrap>
+         <h2 style="font-size:15px;color:green" *ngIf="!productDetails.sale_price">Regular Price $: {{productDetails.regular_price}}</h2>
+         <h2 style="font-size:15px;color:red" *ngIf="productDetails.sale_price"> Sale Price $: {{productDetails.sale_price}}</h2>
+         <h2 style="font-size:15px;color:green" *ngIf="productDetails.sale_price"><del>Regular Price $: {{productDetails.regular_price}}</del></h2>
+      </ion-item-->
+
+   
+
+      <ion-item style=" background-color:#f2f2f2" no-lines>
+         <strong style="color:#50b7c0;" class="divider-name">{{"ShortDescription" | translate}}</strong>
+      </ion-item>
+      <ion-item text-wrap  no-lines>
+         <div [innerHTML]="productDetails.short_description"></div>
+      </ion-item>
+      <ion-item style=" background-color:#f2f2f2;"  no-lines>
+         <strong style="color:#50b7c0;" class="divider-name">{{"Description" | translate}} </strong> 
+      </ion-item>
+      <ion-item text-wrap  no-lines>
+         <div [innerHTML]="productDetails.description"></div>
+      </ion-item>
+   </div>
+   <br>
+
+   <!--div *ngIf="productDetails" style="margin-bottom:40px">
       <img src="{{productDetails.downloadURL}}">
       <ion-label style="margin-bottom:0px" color="shadow" text-center>
          <strong>{{productDetails.name}}</strong>
@@ -36,8 +74,7 @@
       <ion-item text-wrap  no-lines>
          <div [innerHTML]="productDetails.description"></div>
       </ion-item>
-   </div>
-   <br>
+   </div-->
 </ion-content>
 <ion-footer *ngIf="productDetails">
    <ion-grid no-padding>

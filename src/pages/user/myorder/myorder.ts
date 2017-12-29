@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Service } from '../../../providers/service';
+import { Values } from '../../../providers/values';
 import firebase from 'firebase';
 
 /**
@@ -18,7 +19,7 @@ export class MyorderPage {
 	currentUser: any;
 	myOrderList: any;
 	id:any;
-  constructor(public nav: NavController, public navParams: NavParams, public service:Service) {
+  constructor(public nav: NavController, public navParams: NavParams, public service:Service, public values:Values) {
 
   	this.currentUser = firebase.auth().currentUser;
 
@@ -29,6 +30,7 @@ export class MyorderPage {
       	 	 this.myOrderList.push({
   		    	  id: snap.key,
   		    		items: snap.val().items,
+              deliveryDate: snap.val().deliveryDate,
               total: snap.val().total
       	   });
     	  });

@@ -30,12 +30,16 @@ export class Service {
   public profilePictureRef: any; 
   public currentUser: any;
   public user: any;
-  total: number = 0;
+  total: number = 0.00;
   proqty: Array<number> = [];
   getSecKey: any;
   users: any;
   bannerList: any;
   customerRole: any;
+  name: any;
+  brandBannerList: any;
+  chrg: any;
+  prob: any;
   constructor(public http: Http, private config: Config) {
 
     this.url = this.config.url;
@@ -50,6 +54,7 @@ export class Service {
     this.addCategory = firebase.database().ref('/Category_List'); 
     this.customerList = firebase.database().ref('/Customer-List' );
     this.customerRole = firebase.database().ref('/Customer-Role');
+    this.brandBannerList = firebase.database().ref('/Brad-Banners');
 
   }
 
@@ -57,6 +62,10 @@ export class Service {
 
   getBanners(): any{
     return this.bannerList;
+  }
+
+  getBrandBanners(): any{
+    return this.brandBannerList;
   }
 
   getCategoryList(): any {
@@ -67,6 +76,15 @@ export class Service {
     this.productsList = this.addProduct.orderByChild("category").equalTo(id.id);
     return this.productsList;
   }
+
+  getSortProductLists(name){
+    if(name == "Puma"){
+       this.productsList = this.addProduct.orderByChild("brand").equalTo(name);
+      return this.productsList;
+    }
+   
+  }
+
 
   address(address: String, id:any, phone){
     var postsRef = this.customerList.child( id );
@@ -108,23 +126,36 @@ export class Service {
   }
 
   chargeStripe(token, currency, amount, secret_kay){
-    this.getSecKey = secret_kay;
+      this.getSecKey = secret_kay;
     var headers = new Headers();
     var params = new URLSearchParams();
+    
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
     headers.append('Authorization', 'Bearer ' + secret_kay); 
-    params.append("currency", currency);
+   
     params.append("amount", amount);
+    params.append("currency", currency);
     params.append("description", "description");
     params.append("source", token);
 
     return new Promise(resolve => {  
       this.http.post(  'https://api.stripe.com/v1/charges', params, { headers: headers }).map(res => res.json())
         .subscribe(data => {
-          resolve(data);
-        });
+          this.chrg = data;
+          resolve(this.chrg);
+        },  err => {
+
+
+          resolve(JSON.parse(err._body));console.log(err._body)
+            this.prob = err;
+
+
+          });
+      
     });
   }
+
+  
 
   getSetting(){
     return this.setting;
@@ -150,6 +181,15 @@ export class Service {
     banners1: banners[0],
     banners2: banners[1],
     banners3: banners[2]
+    });
+  }
+
+
+  addBrandBanner(banners){
+    return this.brandBannerList.set({
+    brandBanners1: banners[0],
+    brandBanners2: banners[1],
+    brandBanners3: banners[2]
     });
   }
 
@@ -243,7 +283,7 @@ export class Service {
   editCustomers(displayName: String, phone:String, address: String, role:String, id: any){
     return this.customerList.child(id).update({
       displayName: displayName,
-      phone: phone,
+      phoneNumber: phone,
       address: address,
      // role: role,
     }),
@@ -261,7 +301,7 @@ export class Service {
   saveCustomers(displayName: String, phone:String, address: String, id: any){
     return this.customerList.child(id).update({
       displayName: displayName,
-      phone: phone,
+      phoneNumber: phone,
       address: address,
       timeStamp: firebase.database.ServerValue.TIMESTAMP,
       reverseOrder: 0 - Date.now()
@@ -327,5 +367,19 @@ export class Service {
   // End Admin Only Functions. Delete till here for customer only App
 
 
+     /*chargepagomio(token){
+   
+    var params = new URLSearchParams();
+    params.append("source", token);
+
+    return new Promise(resolve => {  
+      this.http.post(  'https://sandbox.pagomio.com/payment/token/', params).map(res => res.json())
+        .subscribe(data => {
+          resolve(data);
+        });
+    });
+  });
+  
+  }*/
 
 }

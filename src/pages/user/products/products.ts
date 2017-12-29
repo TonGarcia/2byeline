@@ -3,6 +3,7 @@ import { Values } from '../../../providers/values';
 import { Service } from '../../../providers/service';
 import { NavController, NavParams, IonicPage } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
+import firebase from 'firebase';
 
 
 /*
@@ -24,10 +25,17 @@ export class ProductsPage {
   quantity: any;
   cartItem: any = {};
   price: any;
-
+  showFilters: boolean = false;
+  has_more_items: boolean = true;
+  filter: any;
+  brandList: any;
+  vendorList: any;
+  addProduct:any;
+  showCategories: any;
   constructor(public nav: NavController, public params: NavParams, public service: Service, public values:Values, public translateService: TranslateService ) {
     this.id = params.data;
-
+    this.filter = {};
+    this.addProduct = firebase.database().ref('/product-List');
   	this.service.getProductLists(this.id).on('value', snapshot =>{
   		this.productsList = [];
 
@@ -41,10 +49,37 @@ export class ProductsPage {
 	        short_description: snap.val().short_description,
 	        description: snap.val().description,
 	        regular_price: snap.val().regular_price,
-	        sale_price: snap.val().sale_price
+	        sale_price: snap.val().sale_price,
+          brand: snap.val().brand,
+          vendor: snap.val().vendor
   			});
   		});
   	});
+
+     this.service.getBrandList().on('value', snapshot => {
+
+      this.brandList = [];
+
+      snapshot.forEach( snap => {
+        this.brandList.push({
+        id: snap.key,
+        name: snap.val().name,
+        description: snap.val().description
+        });
+      });
+    });
+
+      this.service.getVendorList().on('value', snapshot => {
+      this.vendorList = [];
+
+      snapshot.forEach( snap => {
+        this.vendorList.push({
+        id: snap.key,
+        name: snap.val().name,
+        description: snap.val().description
+        });
+      });
+    });
 
   }
 
@@ -114,7 +149,91 @@ export class ProductsPage {
     this.values.listview = false;
   }
 
- 
+  getFilter() {
+        this.showFilters = true;
+        this.has_more_items = false;
+    }
+
+    cancel() {
+        this.showFilters = false;
+        this.has_more_items = true;
+    }
+    
+    chnageBrandFilter(sort) {
+        this.showFilters = false;
+        this.has_more_items = true;
+        console.log(sort);
+       this.addProduct.orderByChild("brand").equalTo(sort).on('value', snapshot =>{
+        this.productsList = [];
+          snapshot.forEach( snap =>{
+            this.productsList.push({
+              category: snap.val().category,
+              id: snap.key,
+              in_stock: snap.val().in_stock,
+              name: snap.val().name,
+              downloadURL: snap.val().downloadURL,
+              short_description: snap.val().short_description,
+              description: snap.val().description,
+              regular_price: snap.val().regular_price,
+              sale_price: snap.val().sale_price
+            });
+          });
+        });      
+    }
+
+
+    chnageVendorFilter(sort) {
+        this.showFilters = false;
+        this.has_more_items = true;
+          console.log(sort);
+       this.addProduct.orderByChild("vendor").equalTo(sort).on('value', snapshot =>{
+        this.productsList = [];
+          snapshot.forEach( snap =>{
+            this.productsList.push({
+              category: snap.val().category,
+              id: snap.key,
+              in_stock: snap.val().in_stock,
+              name: snap.val().name,
+              downloadURL: snap.val().downloadURL,
+              short_description: snap.val().short_description,
+              description: snap.val().description,
+              regular_price: snap.val().regular_price,
+              sale_price: snap.val().sale_price
+            });
+          });
+        });      
+    }
+
+    chnageAtozFilter(sort) {
+        this.showFilters = false;
+        this.has_more_items = true;
+          console.log(sort);
+       this.addProduct.orderByChild("name").startAt(sort).on('value', snapshot =>{
+        this.productsList = [];
+          snapshot.forEach( snap =>{
+            this.productsList.push({
+              category: snap.val().category,
+              id: snap.key,
+              in_stock: snap.val().in_stock,
+              name: snap.val().name,
+              downloadURL: snap.val().downloadURL,
+              short_description: snap.val().short_description,
+              description: snap.val().description,
+              regular_price: snap.val().regular_price,
+              sale_price: snap.val().sale_price
+            });
+          });
+        });      
+    }
    
+   
+
+      dropDown(){
+      this.showCategories = true;
+    }
+
+    dropup(){
+      this.showCategories = false;
+    }
 
 }

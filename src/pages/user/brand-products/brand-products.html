@@ -1,31 +1,22 @@
 <!--
-   Generated template for the Products page.
-   
-   See http://ionicframework.com/docs/v2/components/#navigation for more info on
-   Ionic pages and navigation.
-   -->
+  Generated template for the BrandProductsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
 <ion-header>
-   <ion-navbar color="danger">
-      <button ion-button menuToggle>
-         <ion-icon name="menu"></ion-icon>
-      </button>
-      <ion-title text-center>{{"Products" | translate}}</ion-title>
-       <ion-buttons end>
-      <button ion-button icon-only light class="has-icon icon-only has-badge" (click)="getFilter()">
-        <ion-icon ios="ios-funnel" md="md-funnel">
-        </ion-icon>
-      </button>
-    </ion-buttons>
-   </ion-navbar>
+  <ion-navbar color="danger">
+    <ion-title text-center>Products</ion-title>
+  </ion-navbar>
 </ion-header>
-<ion-content class="products">
+<ion-content>
 <ion-spinner *ngIf="!productsList" name="crescent" style="display:block; margin-left: auto; margin-right:auto; margin-top: 5px; margin-bottom:5px" ></ion-spinner>
    <div *ngIf=productsList class="prod">
       <div *ngIf="productsList.length">
          <div *ngIf="values.listview">
             <ion-item no-lines class="item-name">
                <ion-label text-capitalize>{{"Products" | translate}}</ion-label>
-               <button ion-button icon-only item-right clear (click)="setGridView()">
+               <button ion-button icon-only item-right clear color="shadow" (click)="setGridView()">
                   <ion-icon ios="ios-grid" md="md-grid"></ion-icon>
                </button>
             </ion-item>
@@ -81,7 +72,7 @@
                            </a>
                         </ion-card-content>
                         <ion-label style="font-weight:500; margin:8px 8px 0px;color:#4caeb6;"><strong>{{item.name}}</strong></ion-label>
-                        <ion-item no-padding class="price-lists">
+                        <ion-item no-padding class="price-list">
                            <a (click)="getProductDetails(item.id)">
                               <h3 style="margin-top: 0px; text-align: left" style="color:#4caeb6;" *ngIf="!item.sale_price">{{1*item.regular_price | currency:values.currency:true:'1.2-2'}}</h3>
                               <h3 style="margin-top: 0px; text-align: left" style="color:#f53d3d;" *ngIf="item.sale_price">{{1*item.sale_price | currency:values.currency:true:'1.2-2'}}</h3>
@@ -106,4 +97,5 @@
          <!-- end of drid view -->   
       </div>
    </div>
+
 </ion-content>

@@ -7,6 +7,8 @@ import { Functions } from '../../../providers/functions/functions';
 import { Stripe } from '@ionic-native/stripe';
 import firebase from 'firebase'
 import { TranslateService } from '@ngx-translate/core';
+import { Http } from '@angular/http';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 /**
  * Generated class for the Cart page.
@@ -31,22 +33,35 @@ export class Cart {
   setting: any;
   payments: any;
   userProfiles: any;
-  constructor(public nav: NavController, public params: NavParams, public functions: Functions, public service: Service, public values:Values, private payPal: PayPal, private stripe: Stripe, public translateService: TranslateService) {
-    
+  Checkout: any;
+  body: any;
+  status: any;
+  datas: any;
+  ref: any;
+  constructor(public http: Http, private iab: InAppBrowser, public nav: NavController, public params: NavParams, public functions: Functions, public service: Service, public values:Values, private payPal: PayPal, private stripe: Stripe, public translateService: TranslateService) {
+    this.Checkout = "cart"
     this.payments = [];
     this.form = {}; 
     this.buttonText= "Place Order";
     this.currentUser = firebase.auth().currentUser;
-
-    if(this.currentUser){
-       this.service.getUserProfile(this.currentUser.uid).on('value', snapshot =>{
+    console.log(this.service.total);
+    if(this.values.isLoggedIn){
+       this.service.getUserProfile(this.values.id).on('value', snapshot =>{
          this.userProfiles = snapshot.val();
+
       });
     }
 
     this.service.getSetting().on('value', snapshot =>{
       this.setting  = snapshot.val();
+      console.log(this.setting);
     });
+
+    this.ref = Math.floor(Math.random() * 200000);
+      function randomWholeNum() {
+          // Only change code below this line.
+          return Math.random();
+    }
   }
 
 
@@ -86,18 +101,29 @@ export class Cart {
       if(this.values.isLoggedIn){
 
          
-          if(this.userProfiles.address == ''|| this.userProfiles.address == undefined ){
+         this.service.getUserProfile(this.values.id).on('value', snapshot =>{
+                      this.userProfiles = snapshot.val();
+                  });
+            console.log(this.userProfiles);
+          if(this.userProfiles.address == ''|| this.userProfiles.address == undefined){
 
                this.nav.push('Address', this.userProfiles);
-            this.disableSubmit = false;
-
-              
-            
+            this.disableSubmit = false;         
           }
         
           else{
            
               if( this.form.payment_method == "paypal"){
+
+                
+
+
+                  if(this.userProfiles.address == ''|| this.userProfiles.address == undefined ){
+
+                       this.nav.push('Address', this.userProfiles);
+                        this.disableSubmit = false;
+                  }
+                  else{
 
                 this.payPal.init({
                   PayPalEnvironmentProduction: this.setting.client_id,
@@ -138,7 +164,7 @@ export class Cart {
                         this.disableSubmit = false;
                         //this.customerDetails = this.userProfiles;
                         this.functions.showAlert('Success',  'Your order has been placed Successfully');
-                        this.service.addOrders( item, this.service.total, this.currentUser.uid, this.payments, this.userProfiles).then(()=>{
+                        this.service.addOrders( item, this.service.total, this.values.id, this.payments, this.userProfiles).then(()=>{
                         //  this.nav.setRoot('OrderList');
                           this.service.cart.line_items = []; 
                            this.values.qty = null;
@@ -164,8 +190,11 @@ export class Cart {
                   });
               }
 
+                  }
 
-              else if( this.form.payment_method == "stripe"){
+
+
+               else if( this.form.payment_method == "stripe"){
                   this.service.getUserProfile(this.currentUser.uid).on('value', snapshot =>{
                         this.userProfiles = snapshot.val();
                   });
@@ -186,17 +215,18 @@ export class Cart {
                           console.log(token);
                           this.getToken = token;
 
-                          if(this.getToken){
-                              this.service.chargeStripe(this.getToken, this.values.currency, this.service.total, this.setting.secret_kay)
-                                .then((result) => this.getPayments = result);
 
-                          }
+                              this.service.chargeStripe(this.getToken.id, this.values.currency, this.service.total, this.setting.secret_kay)
+                                .then((results) => this.getPayments = results);
 
-                            this.payments.paymentType = this.form.payment_method;
-                            this.payments.id = this.getPayments.id;
-                            this.payments.status = this.getPayments.status;
-                            this.payments.amount = this.getPayments.amount;
 
+                      
+
+                           this.payments.paymentType = this.form.payment_method;
+                           this.payments.id = this.getPayments.id;
+                           this.payments.status = this.getPayments.status;
+                           this.payments.amount = this.getPayments.amount;
+                           
                             this.disableSubmit = false;
                             this.functions.showAlert('Success',  'Your order has been placed Successfully');
                             this.service.addOrders( item, this.service.total, this.currentUser.uid, this.payments, this.userProfiles).then(()=>{
@@ -221,14 +251,19 @@ export class Cart {
 
              else if (this.form.payment_method == "cod") {
 
-                  this.service.getUserProfile(this.currentUser.uid).on('value', snapshot =>{
-                      this.userProfiles = snapshot.val();
-                  });
-                  
-                  if(this.userProfiles.address != undefined && this.userProfiles.phone != undefined){
+                 
+
+
+                  if(this.userProfiles.address == ''|| this.userProfiles.address == undefined ){
+
+                       this.nav.push('Address', this.userProfiles);
+                        this.disableSubmit = false;
+                  }
+
+                  else{
                       this.payments.PaymentType = this.form.payment_method;
                       this.functions.showAlert('Success',  'Your order has been placed Successfully');
-                      this.service.addOrders( item, this.service.total, this.currentUser.uid, this.payments, this.userProfiles).then(()=>{
+                      this.service.addOrders( item, this.service.total, this.values.id, this.payments, this.userProfiles).then(()=>{
                         // this.nav.setRoot('OrderList');     
                            this.service.cart.line_items = []; 
                            this.disableSubmit = false;
@@ -238,6 +273,7 @@ export class Cart {
                       });        
                   }
               }
+
           } 
       }  
   
@@ -247,6 +283,9 @@ export class Cart {
           this.disableSubmit = false;
       }
   }
+
+
+ 
 
   /*empty(){
     this.nav.setRoot('ShopPage')

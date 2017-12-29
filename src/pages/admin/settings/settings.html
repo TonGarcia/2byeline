@@ -13,17 +13,6 @@
    <div>
       <form #f="ngForm">
          <ion-list>
-            <!--ion-item style="padding-top:10px">
-               <ion-label floatingy>{{"SelectLanguage" | translate}}</ion-label>
-               <ion-select [(ngModel)]="language" (ngModelChange)="onChange($event)" name="languages">
-               <ion-option value="arabic">{{ "arabic" | translate }}</ion-option>
-               <ion-option value="chinese">{{ "chinese" | translate }}</ion-option>
-               <ion-option value="english">{{ "english" | translate }}</ion-option>
-               <ion-option value="french">{{ "french" | translate }}</ion-option>
-               <ion-option value="hindi">{{ "hindi" | translate }}</ion-option>
-               <ion-option value="russian">{{ "russian" | translate }}</ion-option>
-               </ion-select>
-            </ion-item-->
             <ion-item style="padding-top:10px;padding-bottom: 5px;">
                <ion-label floatingy>Currency</ion-label>
                   <ion-select [(ngModel)]="form.currency" name="currency">
@@ -81,6 +70,22 @@
                </form>
             </div>
 
+            <ion-item  style=" background-color:#f2f2f2;margin-bottom:4px" no-lines>
+               <ion-label *ngIf="form.pagomio" color="secondary" style="font-size: 15px;">Pagomio Enabled</ion-label>
+               <ion-label *ngIf="!form.pagomio" color="danger" style="font-size: 15px;">Pagomio Disabled</ion-label>
+               <ion-toggle checked="true" [(ngModel)]="form.pagomio" name="subscribe"></ion-toggle>
+            </ion-item>
+
+            <div *ngIf="form.pagomio">
+               <form #f="ngForm">
+                     <ion-item>
+                        <ion-label floating>Add Authorization Key</ion-label>
+                        <ion-input required type="text" [(ngModel)]="form.authorization" name="authorization"></ion-input>
+                     </ion-item>
+               </form>
+            </div>
+
+
             <ion-item style=" background-color:#f2f2f2; margin-bottom:4px" no-lines>
                <ion-label style="font-size: 15px;">Banners</ion-label>
             </ion-item>
@@ -104,6 +109,7 @@
                   <input style="padding-top: 5px" type="file" name="select Image" (change)="onChangeBanner($event, 2)" >
                </ion-item>
             </div>
+            
         </ion-list>
       </form>
       <div style="margin:11px 3px 5px 3px;">

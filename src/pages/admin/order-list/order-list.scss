@@ -1,6 +1,19 @@
 page-order-list {
    
     .item{
-    border-bottom: 1px solid rgba(206, 206, 206, 0.8);
+    	border-bottom: 1px solid rgba(206, 206, 206, 0.8);
     }
+    .col{
+    	width:33%;
+    }
+
+    .list-padding{
+    	padding: 0px 16px 0px 16px;
+    }
+
+    .list{
+    	margin: 0px;
+    }    
+
+    
 }

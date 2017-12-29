@@ -86,10 +86,6 @@
     <plugin name="cordova-plugin-googleplus" spec="^5.1.1">
         <variable name="REVERSED_CLIENT_ID" value="423889102045-mob7ltd45abelvhgfroogq0osattmjq0.apps.googleusercontent.com" />
     </plugin>
-    <plugin name="cordova-plugin-facebook4" spec="^1.9.1">
-        <variable name="APP_ID" value="1858204527781194" />
-        <variable name="APP_NAME" value="ByeLine" />
-    </plugin>
     <plugin name="twitter-connect-plugin" spec="^0.6.0">
         <variable name="FABRIC_KEY" value="22e52b651977bf4dc8f239e306c474402245853a" />
     </plugin>
@@ -100,5 +96,9 @@
     <engine name="android" spec="~7.0.0" />
     <plugin name="phonegap-plugin-push" spec="^2.1.2">
         <variable name="FCM_VERSION" value="11.0.1" />
+    </plugin>
+    <plugin name="cordova-plugin-facebook4" spec="^1.9.1">
+        <variable name="APP_ID" value="1858204527781194" />
+        <variable name="APP_NAME" value="ByeLine" />
     </plugin>
 </widget>

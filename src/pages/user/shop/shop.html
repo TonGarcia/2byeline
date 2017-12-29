@@ -26,9 +26,9 @@
    </div>
    <div *ngIf="categoryList.length" class="shop">
       <div class="shop-name">
-         <ion-item><b color="shadow" text-uppercase>{{"Shop" | translate}}</b></ion-item>
+         <ion-item><ion-label class="header-font-size"><b>{{"Shop" | translate}}</b></ion-label></ion-item>
       </div>
-      <ion-row class="row unlimited-items">
+      <ion-row  class="row unlimited-items">
          <ion-col class="col" *ngFor="let item of categoryList">
             <a (click)="getProducts(item.id)">
                <ion-card>
@@ -36,7 +36,7 @@
                      <img src="{{item.downloadURL}}">
                   </ion-card-content>
                   <div text-center style="padding: 10px;">
-                     <ion-label color="dark" text-uppercase style="font-weight:500; margin-left:5px">{{item.name}}</ion-label>
+                     <ion-label color="dark"  style="font-weight:500; margin-left:5px" text-capitalize>{{item.name}}</ion-label>
                   </div>
                </ion-card>
             </a>

@@ -11,18 +11,37 @@
 </ion-header>
 <ion-content>
    <ion-spinner *ngIf="!myOrderList" name="crescent" style="display:block; margin-left: auto; margin-right:auto; margin-top: 5px; margin-bottom:5px" ></ion-spinner>
-   <div style="margin: 10px 0 0 0;">
-      <ion-list *ngFor="let item of myOrderList">
-         <ion-item no-lines *ngFor="let post of item.items" class="items" (click)="getOrderDetails(item.id)" >
-         <h4  style="margin-top:0px;border-height: 0px;">Name: {{post.name}}</h4>
-         <h4 class="rap" style="border-height: 0px;">Price: {{post.price}}</h4>
-         </ion-item>
-         <h4  style="margin-top:10px;margin-bottom:0px; font-size:15px; padding-left:16px;border-height: 0px;">Total:{{item.total}}</h4>
-         <button ion-button icon-left style="padding-right:0px" no-margin clear (click)="deleteOder(item.id)">
-            <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
-            Delete
-         </button>
-         <hr style="border-height: 1px;">
+   <div *ngIf="myOrderList">
+      <ion-list class="list-padding" *ngFor="let item of myOrderList">
+        <ion-item no-padding tappable *ngFor="let post of item.items" class="items" (click)="getOrderDetails(item.id)">
+        <div (click)="getOrderDetails(item.id)">
+          <h2>Name: {{post.name}}</h2>
+          <p>Price: {{post.price}}</p>
+          <p>Delivery Date: {{item.deliveryDate}}</p>
+          <p>Total: {{item.total | currency:values.currency:true:'1.2-2'}}</p>
+         </div> 
+          <br>
+          <ion-row>
+          <ion-col no-padding>
+               <button ion-button  no-padding icon-left no-margin clear (click)="deleteOder(item.id)">
+                  <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
+                  Delete
+               </button>
+               </ion-col>
+               <ion-col no-padding>
+                  <button ion-button  no-padding icon-left no-margin clear>
+                  <ion-icon style="color: #ffa500;" name="time"></ion-icon>
+                  {{item.deliveryDate | date}}
+                  </button>
+               </ion-col>
+               <ion-col no-padding style="text-align: right;">
+               <button ion-button  no-padding icon-left no-margin clear (click)="getOrderDetails(item.id)">
+                  <ion-icon name="eye" style="color: #ff6868;"></ion-icon>
+                  View
+               </button>
+               </ion-col>
+               </ion-row>
+        </ion-item>
       </ion-list>
    </div>
 </ion-content>

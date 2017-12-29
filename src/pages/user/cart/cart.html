@@ -6,10 +6,11 @@
    -->
 <ion-header>
    <ion-navbar color="danger">
-      <ion-title text-center>{{"Cart" | translate}}</ion-title>
+            <ion-title text-center>Cart</ion-title>
    </ion-navbar>
 </ion-header>
 <ion-content class="cart">
+
    <ion-spinner *ngIf="!service.cart" name="crescent" style="display:block; margin-left: auto; margin-right:auto; margin-top: 5px; margin-bottom:5px" ></ion-spinner>
    <div *ngIf="service.cart">
       <div  *ngIf="service.cart.line_items.length == 0" style="margin:60px 10px 0 10px;">
@@ -21,11 +22,11 @@
       <div *ngIf="service.cart.line_items">
 
          <div *ngIf="service.cart.line_items.length != 0">
-            <ion-item no-lines class="item-name">
-               <ion-label text-uppercase>{{"Cart" | translate}}</ion-label>
+            <ion-item no-lines no-padding class="item-name">
+               <ion-label text-capitalize>{{"Cart" | translate}}</ion-label>
             </ion-item>
-            <ion-list style="margin-left:5px; margin-right:5px;">
-               <ion-item  *ngFor="let item of service.cart.line_items" >
+            <ion-list>
+               <ion-item no-padding *ngFor="let item of service.cart.line_items" >
                   <ion-thumbnail item-left>
                      <img src="{{item.image}}">
                   </ion-thumbnail>
@@ -41,65 +42,288 @@
                   </button>
                </ion-item>
                <br>
-               <ion-row class="label">
+            </ion-list>
+            <ion-row class="label">
                   <ion-col width-75>
-                     <ion-label no-margin><b>Totals</b></ion-label>
+                     <ion-label no-margin style="font-size:16px"><b>Totals</b></ion-label>
                   </ion-col>
                   <ion-col width-25 text-right>
                      <ion-label no-margin><b>{{1*service.total | currency:values.currency:true:'1.2-2'}}</b></ion-label>
                   </ion-col>
                </ion-row>
-            </ion-list>
             <div>
                <ion-list style="margin:0px" text-wrap radio-group [(ngModel)]="form.payment_method">
-               <ion-item no-lines class="item-name">
+               <ion-item no-lines no-padding class="item-name">
                   <ion-label> {{"SelectPaymentMethod" | translate}}</ion-label>
                </ion-item>
-               <ion-item *ngIf="this.setting.paypal">
+               <ion-item no-padding *ngIf="this.setting.paypal">
                   <ion-label style="padding-left:15px">{{"ProceedtopayPal" | translate}}</ion-label>
-                  <ion-radio value="paypal" checked></ion-radio>
+                  <ion-radio value="paypal"></ion-radio>
                </ion-item>
-               <ion-item *ngIf="this.setting.stripe">
+               <ion-item no-padding *ngIf="this.setting.stripe">
                   <ion-label style="padding-left:15px">Stripe</ion-label>
                   <ion-radio value="stripe"></ion-radio>
                </ion-item>
-               <ion-item>
-                  <ion-label *ngIf="this.setting.cod" style="padding-left:15px">Cash On Delivery</ion-label>
+               <ion-item no-padding *ngIf="this.setting.cod">
+                  <ion-label style="padding-left:15px">Cash On Delivery</ion-label>
                   <ion-radio value="cod"></ion-radio>
                </ion-item>
                </ion-list>
             </div>
+
+             <!--div>
+               <ion-list style="margin:0px" text-wrap radio-group [(ngModel)]="form.payment_method">
+               <ion-item no-lines no-padding class="item-name">
+                  <ion-label> {{"SelectPaymentMethod" | translate}}</ion-label>
+               </ion-item>
+               <ion-item no-padding *ngIf="this.setting.paypal">
+                  <ion-label> <img height="70px" src="assets/images/PayPalCard.png"></ion-label>
+                  <ion-radio value="paypal" checked></ion-radio>
+               </ion-item>
+               <ion-item no-padding *ngIf="this.setting.stripe">
+                  <ion-label><img height="70px" src="assets/images/Stripe_profile.png"></ion-label>
+                  <ion-radio value="stripe"></ion-radio>
+               </ion-item>
+               <ion-item no-padding>
+                  <ion-label><img height="70px" src="assets/images/pagomio.png"></ion-label>
+                  <ion-radio value="pagomio"></ion-radio>
+               </ion-item>
+               <ion-item no-padding *ngIf="this.setting.cod">
+                  <ion-label><img height="70px" src="assets/images/cod.png"></ion-label>
+                  <ion-radio value="cod"></ion-radio>
+               </ion-item>
+               </ion-list>
+               <hr>
+            </div-->
             <div *ngIf="form.payment_method =='stripe'" style="margin:0px;background-color:#f2f2f2;padding:10px">
                <ion-label>Make Payment Via Stripe
                </ion-label>
                <form #f="ngForm">
-                  <ion-list no-margin>
-                     <ion-item style=" background-color:#f2f2f2">
+                  <ion-list class="payment-form">
+                     <ion-item style=" background-color:#f2f2f2" class="payment-name">
                         <ion-label style="font-size: 15px;" color="side-heading-color">{{"StripeCardDetails" | translate}}
                         </ion-label>
                      </ion-item>
-                     <ion-item>
+                     <ion-item class="payment-name">
                         <ion-label floating>Card Number
                         </ion-label>
                         <ion-input required type="text" [(ngModel)]="form.stripe_number" name="stripe_number">
                         </ion-input>
                      </ion-item>
-                     <ion-item>
+                     <ion-item class="payment-name">
                         <ion-label floating>Expiry Month (MM)
                         </ion-label>
                         <ion-input required type="text" [(ngModel)]="form.stripe_exp_month" name="stripe_exp_year">
                         </ion-input>
                      </ion-item>
-                     <ion-item>
+                     <ion-item class="payment-name"> 
                         <ion-label floating>Expiry Year (YYYY)
                         </ion-label>
                         <ion-input required type="text" [(ngModel)]="form.stripe_exp_year" name="stripe_exp_year">
                         </ion-input>
                      </ion-item>
-                     <ion-item>
+                     <ion-item class="payment-name">
                         <ion-label floating>Card Code
                         </ion-label>
                         <ion-input required type="text" [(ngModel)]="form.stripe_code" name="stripe_code">
+                        </ion-input>
+                     </ion-item>
+                  </ion-list>
+               </form>
+               <br> 
+            </div>
+             <!--div *ngIf="form.payment_method =='pagomio'" style="margin:0px;background-color:#f2f2f2;padding:10px">
+               <ion-label>Make Payment Via pagomio
+               </ion-label>
+               <form #f="ngForm">
+                  <ion-list  class="payment-form">
+
+                     <ion-item style=" background-color:#f2f2f2" class="payment-name">
+                        <ion-label style="font-size: 15px;" color="side-heading-color">pagomio Card Details
+                        </ion-label>
+                     </ion-item>
+                     <ion-item class="payment-name">
+                        <ion-label floating>Identification Type
+                        </ion-label>
+                        <ion-input required type="text" [(ngModel)]="form.identificationType" name="stripe_number">
+                        </ion-input>
+                     </ion-item>
+                     <ion-item class="payment-name">
+                        <ion-label floating>Identification
+                        </ion-label>
+                        <ion-input required type="text" [(ngModel)]="form.identification" name="stripe_exp_year">
+                        </ion-input>
+                     </ion-item>
+                     <ion-item class="payment-name">
+                        <ion-label floating>Reference
+                        </ion-label>
+                        <ion-input required type="text" [(ngModel)]="form.reference" name="stripe_exp_year">
+                        </ion-input>
+                     </ion-item>
+                  </ion-list>
+               </form>
+               <br> 
+            </div-->
+            <div style="margin: 10px 5px;">
+               <button ion-button no-margin item-right full color="shadow" [disabled]="disableSubmit" (click)="placeOrder(service.cart.line_items)">{{"Continue" | translate}}</button>
+            </div>
+         </div>
+      </div>
+   </div>
+     
+      {{service.prob  | json}}
+
+   <!--ion-spinner *ngIf="!service.cart" name="crescent" style="display:block; margin-left: auto; margin-right:auto; margin-top: 5px; margin-bottom:5px" ></ion-spinner>
+   <div *ngIf="service.cart">
+      <div  *ngIf="service.cart.line_items.length == 0" style="margin:60px 10px 0 10px;">
+         <P style="text-align:center"> <img height="160px" src="assets/images/empty-bag.png"> </P>
+         <div *ngIf="service.cart.line_items.length == 0" style="text-align:center">
+            <button ion-button clear color="danger" round>{{"Yourcartisempty!" | translate}}</button>
+         </div>
+      </div>
+      <div *ngIf="service.cart.line_items">
+
+         <div *ngIf="service.cart.line_items.length != 0">
+            <ion-item no-lines no-padding class="item-name">
+               <ion-label text-uppercase>{{"Cart" | translate}}</ion-label>
+            </ion-item>
+            <ion-list>
+               <ion-item no-padding *ngFor="let item of service.cart.line_items" >
+                  <ion-thumbnail item-left>
+                     <img src="{{item.image}}">
+                  </ion-thumbnail>
+                  <h3 wrap-text style="font-size:15.5px;">{{item.name}}</h3>
+                  <h4 wrap-text > Price: <span>{{1*item.price | currency:values.currency:true:'1.2-2'}}</span></h4>
+                  <h4 wrap-text> Sub-Total: <span>{{1*item.price*item.quantity | currency:values.currency:true:'1.2-2'  }}</span></h4>
+                  <button ion-button icon-only class="has-icon icon-only" no-margin item-right clear color="shadow" (click)="deleteFromCart(item.product_id)">
+                     <ion-icon ios="ios-remove-circle-outline" md="ios-remove-circle-outline"></ion-icon>
+                  </button>
+                  <h6 item-right color="shadow" class="quantity">{{item.quantity}}</h6>
+                  <button ion-button icon-only class="has-icon icon-only" no-margin item-right clear color="shadow" (click)="addToCart(item.product_id)">
+                     <ion-icon ios="ios-add-circle-outline" md="ios-add-circle-outline"></ion-icon>
+                  </button>
+               </ion-item>
+               <br>
+            </ion-list>
+            <ion-row class="label">
+                  <ion-col width-75>
+                     <ion-label no-margin style="font-size:16px"><b>Totals</b></ion-label>
+                  </ion-col>
+                  <ion-col width-25 text-right>
+                     <ion-label no-margin><b>{{1*service.total | currency:values.currency:true:'1.2-2'}}</b></ion-label>
+                  </ion-col>
+               </ion-row>
+            <div>
+               <ion-list style="margin:0px" text-wrap radio-group [(ngModel)]="form.payment_method">
+               <ion-item no-lines no-padding class="item-name">
+                  <ion-label> {{"SelectPaymentMethod" | translate}}</ion-label>
+               </ion-item>
+               <ion-item no-padding *ngIf="this.setting.paypal">
+                  <ion-label style="padding-left:15px">{{"ProceedtopayPal" | translate}}</ion-label>
+                  <ion-radio value="paypal" checked></ion-radio>
+               </ion-item>
+               <ion-item no-padding *ngIf="this.setting.stripe">
+                  <ion-label style="padding-left:15px">Stripe</ion-label>
+                  <ion-radio value="stripe"></ion-radio>
+               </ion-item>
+               <ion-item no-padding *ngIf="this.setting.cod">
+                  <ion-label style="padding-left:15px">Cash On Delivery</ion-label>
+                  <ion-radio value="cod"></ion-radio>
+               </ion-item>
+               <ion-item no-padding>
+                  <ion-label  style="padding-left:15px">Pagomio</ion-label>
+                  <ion-radio value="pagomio"></ion-radio>
+               </ion-item>
+               </ion-list>
+            </div>
+
+             <div>
+               <ion-list style="margin:0px" text-wrap radio-group [(ngModel)]="form.payment_method">
+               <ion-item no-lines no-padding class="item-name">
+                  <ion-label> {{"SelectPaymentMethod" | translate}}</ion-label>
+               </ion-item>
+               <ion-item no-padding *ngIf="this.setting.paypal">
+                  <ion-label> <img height="70px" src="assets/images/PayPalCard.png"></ion-label>
+                  <ion-radio value="paypal" checked></ion-radio>
+               </ion-item>
+               <ion-item no-padding *ngIf="this.setting.stripe">
+                  <ion-label><img height="70px" src="assets/images/Stripe_profile.png"></ion-label>
+                  <ion-radio value="stripe"></ion-radio>
+               </ion-item>
+               <ion-item no-padding>
+                  <ion-label><img height="70px" src="assets/images/pagomio.png"></ion-label>
+                  <ion-radio value="pagomio"></ion-radio>
+               </ion-item>
+               <ion-item no-padding *ngIf="this.setting.cod">
+                  <ion-label><img height="70px" src="assets/images/cod.png"></ion-label>
+                  <ion-radio value="cod"></ion-radio>
+               </ion-item>
+               </ion-list>
+               <hr>
+            </div>
+            <div *ngIf="form.payment_method =='stripe'" style="margin:0px;background-color:#f2f2f2;padding:10px">
+               <ion-label>Make Payment Via Stripe
+               </ion-label>
+               <form #f="ngForm">
+                  <ion-list class="payment-form">
+                     <ion-item style=" background-color:#f2f2f2" class="payment-name">
+                        <ion-label style="font-size: 15px;" color="side-heading-color">{{"StripeCardDetails" | translate}}
+                        </ion-label>
+                     </ion-item>
+                     <ion-item class="payment-name">
+                        <ion-label floating>Card Number
+                        </ion-label>
+                        <ion-input required type="text" [(ngModel)]="form.stripe_number" name="stripe_number">
+                        </ion-input>
+                     </ion-item>
+                     <ion-item class="payment-name">
+                        <ion-label floating>Expiry Month (MM)
+                        </ion-label>
+                        <ion-input required type="text" [(ngModel)]="form.stripe_exp_month" name="stripe_exp_year">
+                        </ion-input>
+                     </ion-item>
+                     <ion-item class="payment-name"> 
+                        <ion-label floating>Expiry Year (YYYY)
+                        </ion-label>
+                        <ion-input required type="text" [(ngModel)]="form.stripe_exp_year" name="stripe_exp_year">
+                        </ion-input>
+                     </ion-item>
+                     <ion-item class="payment-name">
+                        <ion-label floating>Card Code
+                        </ion-label>
+                        <ion-input required type="text" [(ngModel)]="form.stripe_code" name="stripe_code">
+                        </ion-input>
+                     </ion-item>
+                  </ion-list>
+               </form>
+               <br> 
+            </div>
+             <div *ngIf="form.payment_method =='pagomio'" style="margin:0px;background-color:#f2f2f2;padding:10px">
+               <ion-label>Make Payment Via pagomio
+               </ion-label>
+               <form #f="ngForm">
+                  <ion-list  class="payment-form">
+
+                     <ion-item style=" background-color:#f2f2f2" class="payment-name">
+                        <ion-label style="font-size: 15px;" color="side-heading-color">pagomio Card Details
+                        </ion-label>
+                     </ion-item>
+                     <ion-item class="payment-name">
+                        <ion-label floating>Identification Type
+                        </ion-label>
+                        <ion-input required type="text" [(ngModel)]="form.identificationType" name="stripe_number">
+                        </ion-input>
+                     </ion-item>
+                     <ion-item class="payment-name">
+                        <ion-label floating>Identification
+                        </ion-label>
+                        <ion-input required type="text" [(ngModel)]="form.identification" name="stripe_exp_year">
+                        </ion-input>
+                     </ion-item>
+                     <ion-item class="payment-name">
+                        <ion-label floating>Reference
+                        </ion-label>
+                        <ion-input required type="text" [(ngModel)]="form.reference" name="stripe_exp_year">
                         </ion-input>
                      </ion-item>
                   </ion-list>
@@ -111,5 +335,174 @@
             </div>
          </div>
       </div>
-   </div>
+   </div-->
+
+   <!--ion-segment  [(ngModel)]="Checkout" *ngIf="!service.cart.line_items.length == 0">
+       <ion-segment-button  value="cart">
+         Checkout
+       </ion-segment-button>
+       <ion-segment-button>
+        Paymets Methods
+       </ion-segment-button>
+     </ion-segment>
+
+            <div [ngSwitch]="Checkout">
+                 <ion-list *ngSwitchCase="'cart'">
+                  <ion-spinner *ngIf="!service.cart" name="crescent" style="display:block; margin-left: auto; margin-right:auto; margin-top: 5px; margin-bottom:5px" ></ion-spinner>
+   <div *ngIf="service.cart">
+      <div  *ngIf="service.cart.line_items.length == 0" style="margin:60px 10px 0 10px;">
+         <P style="text-align:center"> <img height="160px" src="assets/images/empty-bag.png"> </P>
+         <div *ngIf="service.cart.line_items.length == 0" style="text-align:center">
+            <button ion-button clear color="danger" round>{{"Yourcartisempty!" | translate}}</button>
+         </div>
+      </div>
+      <div *ngIf="service.cart.line_items">
+
+         <div *ngIf="service.cart.line_items.length != 0">
+           
+            <ion-list>
+               <ion-item no-padding *ngFor="let item of service.cart.line_items" >
+                  <ion-thumbnail item-left>
+                     <img src="{{item.image}}">
+                  </ion-thumbnail>
+                  <h3 wrap-text style="font-size:15.5px;">{{item.name}}</h3>
+                  <h4 wrap-text > Price: <span>{{1*item.price | currency:values.currency:true:'1.2-2'}}</span></h4>
+                  <h4 wrap-text> Sub-Total: <span>{{1*item.price*item.quantity | currency:values.currency:true:'1.2-2'  }}</span></h4>
+                  <button ion-button icon-only class="has-icon icon-only" no-margin item-right clear color="shadow" (click)="deleteFromCart(item.product_id)">
+                     <ion-icon ios="ios-remove-circle-outline" md="ios-remove-circle-outline"></ion-icon>
+                  </button>
+                  <h6 item-right color="shadow" class="quantity">{{item.quantity}}</h6>
+                  <button ion-button icon-only class="has-icon icon-only" no-margin item-right clear color="shadow" (click)="addToCart(item.product_id)">
+                     <ion-icon ios="ios-add-circle-outline" md="ios-add-circle-outline"></ion-icon>
+                  </button>
+               </ion-item>
+               <br>
+            </ion-list>
+            <ion-row class="label">
+                  <ion-col width-75>
+                     <ion-label no-margin style="font-size:16px"><b>Totals</b></ion-label>
+                  </ion-col>
+                  <ion-col width-25 text-right>
+                     <ion-label no-margin><b>{{1*service.total | currency:values.currency:true:'1.2-2'}}</b></ion-label>
+                  </ion-col>
+               </ion-row>
+
+           <ion-segment [(ngModel)]="Checkout" class="checkout-button">
+                <ion-segment-button full style="color:#fff" value="payments">Checkout</ion-segment-button>
+            </ion-segment>
+         </div>
+         </div>
+      </div>
+      </ion-list>
+
+                 <ion-list *ngSwitchCase="'payments'">
+                  
+             <div>
+               <ion-list style="margin:0px" text-wrap radio-group [(ngModel)]="form.payment_method">
+               <ion-item no-lines no-padding class="item-name">
+                  <ion-label> {{"SelectPaymentMethod" | translate}}</ion-label>
+               </ion-item>
+               <ion-item no-padding *ngIf="this.setting.paypal">
+                  <ion-label> <img height="70px" src="assets/images/PayPalCard.png"></ion-label>
+                  <ion-radio value="paypal" checked></ion-radio>
+               </ion-item>
+               <ion-item no-padding *ngIf="this.setting.stripe">
+                  <ion-label><img height="70px" src="assets/images/Stripe_profile.png"></ion-label>
+                  <ion-radio value="stripe"></ion-radio>
+               </ion-item>
+               <ion-item no-padding>
+                  <ion-label><img height="70px" src="assets/images/pagomio.png"></ion-label>
+                  <ion-radio value="pagomio"></ion-radio>
+               </ion-item>
+               <ion-item no-padding *ngIf="this.setting.cod">
+                  <ion-label><img height="70px" src="assets/images/cod.png"></ion-label>
+                  <ion-radio value="cod"></ion-radio>
+               </ion-item>
+               </ion-list>
+               <hr>
+            </div>
+
+            <div *ngIf="form.payment_method =='stripe'" style="margin:0px;background-color:#f2f2f2;padding:10px">
+               <ion-label>Make Payment Via Stripe
+               </ion-label>
+               <form #f="ngForm">
+                  <ion-list class="payment-form">
+                     <ion-item style=" background-color:#f2f2f2" class="payment-name">
+                        <ion-label style="font-size: 15px;" color="side-heading-color">{{"StripeCardDetails" | translate}}
+                        </ion-label>
+                     </ion-item>
+                     <ion-item class="payment-name">
+                        <ion-label floating>Card Number
+                        </ion-label>
+                        <ion-input required type="text" [(ngModel)]="form.stripe_number" name="stripe_number">
+                        </ion-input>
+                     </ion-item>
+                     <ion-item class="payment-name">
+                        <ion-label floating>Expiry Month (MM)
+                        </ion-label>
+                        <ion-input required type="text" [(ngModel)]="form.stripe_exp_month" name="stripe_exp_year">
+                        </ion-input>
+                     </ion-item>
+                     <ion-item class="payment-name"> 
+                        <ion-label floating>Expiry Year (YYYY)
+                        </ion-label>
+                        <ion-input required type="text" [(ngModel)]="form.stripe_exp_year" name="stripe_exp_year">
+                        </ion-input>
+                     </ion-item>
+                     <ion-item class="payment-name">
+                        <ion-label floating>Card Code
+                        </ion-label>
+                        <ion-input required type="text" [(ngModel)]="form.stripe_code" name="stripe_code">
+                        </ion-input>
+                     </ion-item>
+                  </ion-list>
+               </form>
+               <br> 
+            </div>
+             <div *ngIf="form.payment_method =='pagomio'" style="margin:0px;background-color:#f2f2f2;padding:10px">
+               <ion-label>Make Payment Via pagomio
+               </ion-label>
+               <form #f="ngForm">
+                  <ion-list  class="payment-form">
+
+                     <ion-item style=" background-color:#f2f2f2" class="payment-name">
+                        <ion-label style="font-size: 15px;" color="side-heading-color">pagomio Card Details
+                        </ion-label>
+                     </ion-item>
+                     <ion-item class="payment-name">
+                        <ion-label floating>Identification Type
+                        </ion-label>
+                        <ion-input required type="text" [(ngModel)]="form.identificationType" name="stripe_number">
+                        </ion-input>
+                     </ion-item>
+                     <ion-item class="payment-name">
+                        <ion-label floating>Identification
+                        </ion-label>
+                        <ion-input required type="text" [(ngModel)]="form.identification" name="stripe_exp_year">
+                        </ion-input>
+                     </ion-item>
+                     <ion-item class="payment-name">
+                        <ion-label floating>Reference
+                        </ion-label>
+                        <ion-input required type="text" [(ngModel)]="form.reference" name="stripe_exp_year">
+                        </ion-input>
+                     </ion-item>
+                  </ion-list>
+               </form>
+               <br> 
+
+            </div>
+                  <div style="margin: 10px 5px;">
+              
+                       <ion-segment [(ngModel)]="Checkout" class="checkout-button">
+                <ion-segment-button full style="color:#fff" value="cart" [disabled]="disableSubmit" (click)="placeOrder(service.cart.line_items)">{{"Continue" | translate}}</ion-segment-button>
+            </ion-segment>
+            </div>
+
+                 </ion-list>
+
+                 
+               </div-->
+
+
 </ion-content>

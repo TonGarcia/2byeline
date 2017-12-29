@@ -24,6 +24,8 @@ export class Values {
   isLoggedIn: boolean = false;
   customerList: any;
   userRole: any = "";
+  address: any;
+  id: any;
   constructor( public translateService: TranslateService) {
 
  }

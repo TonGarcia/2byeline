@@ -37,7 +37,7 @@ export class Address {
 
 
   addAddress(){
-      this.service.saveCustomers(this.customer.displayName, this.customer.phone, this.customer.address, this.currentUser.uid)
+      this.service.saveCustomers(this.customer.displayName, this.customer.phoneNumber, this.customer.address, this.currentUser.uid)
       .then(() =>{
         this.nav.pop();
       });

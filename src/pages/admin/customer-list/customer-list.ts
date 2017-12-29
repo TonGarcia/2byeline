@@ -23,7 +23,7 @@ export class CustomerListPage {
   constructor(public nav: NavController, public navParams: NavParams, public service: Service) {
 
    this.currentUser = firebase.auth().currentUser;
-     this.user = firebase.auth().currentUser;
+     this.user =firebase.auth().currentUser;
      this.customerRole = {};
   	this.service.getCustomerList().on('value', snapshot =>{
 
@@ -65,7 +65,7 @@ export class CustomerListPage {
   deleteCustomer(id){
 
   	this.service.deleteCustomers(id);
-    this.user.delete().then(() =>{
+    this.currentUser.delete().then(() =>{
 
      });
   }  

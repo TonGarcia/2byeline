@@ -19,107 +19,121 @@
    </ion-navbar>
 </ion-header>
 <ion-content class="login">
-   <div class="landing" *ngIf="!values.isLoggedIn && !_showSignup">
-      <!--div class="profile-image-top">
-         <img src="assets/image/profile.png">
-         </div-->
-      <div class="login-register">
-         <form #f="ngForm">
-            <ion-list>
-               <ion-item>
-                  <ion-label floating>Email</ion-label>
-                  <ion-input required type="email" [(ngModel)]="form.email" name="email"></ion-input>
-               </ion-item>
-               <ion-item>
-                  <ion-label floating>Password</ion-label>
-                  <ion-input required type="password" [(ngModel)]="form.password" name="password"></ion-input>
-               </ion-item>
-            </ion-list>
-         </form>
-         <div class="error-message">
-            <ion-label color="danger" text-wrap>{{errorSigninMessage}}</ion-label>
-         </div>
-         <ion-row>
-            <ion-col style="margin-right: 5px;">
-               <button class="login" ion-button block color="secondary" type="submit" class="button button-block button-default" text-uppercase [disabled]="disableLogin" (click)="login()">Login</button>
-            </ion-col>
-            <ion-col>
-               <button class="login" ion-button block color="secondary" type="submit" class="button button-block button-default" text-uppercase [disabled]="disableSubmit" (click)="showSignup()">Signup</button>
-            </ion-col>
-            <button style="margin: 0px 20px 20px 20px"class="forgot-button" ion-button clear color="danger" type="submit" class="button button-block button-clear" (click)="forgotten()">Forgot Password?</button>
-         </ion-row>
-      </div>
-      <div class="gmail-login-button">
-         <button style="background-color:#dd4b39" ion-button block (click)="gmailLogin()">
-            <ion-icon ios="logo-google" md="logo-google"></ion-icon>
-            Gmail
-         </button>
-      </div>
-      <div class="facebook-twitter-login">
-         <ion-row>
-            <ion-col style="margin-right: 5px;">
-               <button style="background-color:#3b5998" ion-button block class="facebook-login-button" (click)="facebookLogin()">
-                  <ion-icon item-left ios="logo-facebook" md="logo-facebook"></ion-icon>
-                  Facebook
-               </button>
-            </ion-col>
-            <ion-col>
-               <button style="background-color:#00aced" ion-button block class="twitter-login-button" (click)="twLogin()">
-                  <ion-icon item-left  ios="logo-twitter" md="logo-twitter" ></ion-icon>
-                  Twitter
-               </button>
-            </ion-col>
-         </ion-row>
-      </div>
-      <!--div class="login-phone">
-         <ion-item>
-         
-            <ion-input type="number" [(ngModel)]="phoneNumber" placeholder="Phone Number"></ion-input>
-         </ion-item>
-         <div class="recaptcha" id="recaptcha-container"></div>
-         <div class="error-message">
-            <ion-label color="danger" text-wrap>{{errorPhoneMessage}}</ion-label>
-         </div>
-         <button ion-button medium id="sign-in-button" text-center block (click)="signIn(phoneNumber)">
-         Sign In
-         </button>
-      </div-->
+
+<div class="login-content" *ngIf="!values.isLoggedIn && !_showSignup">
+   <div>
+      <img src="assets/images/logo.jpg">
    </div>
-   <div class="register-form" *ngIf="!values.isLoggedIn && _showSignup">
-      <ion-card>
-         <form #f="ngForm">
-            <ion-list>
-               <ion-list-header color="danger" class="login-header">
-                  Register               
-               </ion-list-header>
-               <ion-item>
-                  <ion-label floating>First Name</ion-label>
-                  <ion-input required type="test" [(ngModel)]="form.firstName" name="firstname"></ion-input>
-               </ion-item>
-               <ion-item>
-                  <ion-label floating>Last Name</ion-label>
-                  <ion-input required type="test" [(ngModel)]="form.lastName" name="lastname"></ion-input>
-               </ion-item>
-               <ion-item>
-                  <ion-label floating>Email</ion-label>
-                  <ion-input required type="email" [(ngModel)]="form.email" name="email"></ion-input>
-               </ion-item>
-               <ion-item>
-                  <ion-label floating>Password</ion-label>
-                  <ion-input required type="password" [(ngModel)]="form.password" name="password"></ion-input>
-               </ion-item>
-            </ion-list>
-            <div class="error-message">
-               <ion-label color="danger" text-wrap>{{errorRegisterMessage}}</ion-label>
-            </div>
-            <div class="row">
-               <button style="margin: 20px 20px 0 20px" class="login-button" ion-button block color="secondary" type="submit" class="button button-block button-default" text-uppercase [disabled]="disableRegister" (click)="register()">{{buttonText}}</button>
-               <br>
-               <button style="margin: 0px 20px 20px 20px"class="forgot-button" ion-button clear color="danger" type="submit" class="button button-block button-clear" (click)="hideSignup()">Login</button>
-            </div>
-         </form>
-      </ion-card>
-   </div>
+
+  <div class="margin">
+    <form #f="ngForm" class="login">
+      <ion-list>
+
+        <ion-item>
+          <ion-input required type="email" [(ngModel)]="form.email" name="firstname" placeholder="Username">
+          </ion-input><ion-icon name="md-mail" item-left></ion-icon>
+        </ion-item>
+
+        <ion-item>
+          <ion-input required type="password" [(ngModel)]="form.password" name="password" placeholder="Password">
+          </ion-input><ion-icon name="md-key" item-left></ion-icon>
+        </ion-item>
+
+        <h2 tappable (click)="forgotten()">Forgot Password?</h2>
+
+      </ion-list>
+
+      <button ion-button block color="button-color" type="submit" class="button button-block button-default" text-uppercase [disabled]="disableSubmit" (click)="login()">LogIn
+      </button>
+
+
+      <ion-row>
+        <ion-col>
+                <button ion-button block style="background-color: #3B5998; color: #fff" type="submit" class="button button-block button-default" text-uppercase [disabled]="disableSubmit" (click)="facebookLogin()">
+                <ion-icon item-left style="color:#fff; padding-right: 5px;" ios="logo-facebook" md="logo-facebook"></ion-icon>
+                 Facebook
+            </button>
+
+        </ion-col>
+        <!--ion-col>
+                <button ion-button block style="background-color: #d34836; color: #fff" type="submit" class="button button-block button-default" text-uppercase [disabled]="disableSubmit" (click)="gmailLogin()">
+                <ion-icon style="color:#fff; padding-right: 5px;" ios="logo-google" md="logo-google"></ion-icon>
+                 Google
+            </button>
+
+        </ion-col>
+         <ion-col>
+                <button ion-button block style="background-color:#00aced; color: #fff" type="submit" class="button button-block button-default" text-uppercase [disabled]="disableSubmit" 
+                (click)="twLogin()">
+                <ion-icon item-left style="color:#fff; padding-right: 5px;" ios="logo-twitter" md="logo-twitter" ></ion-icon>
+                 Twitter
+            </button>
+
+        </ion-col-->
+      </ion-row>
+
+
+      <br>
+      <br>
+      <hr>
+      <br>
+
+      <button ion-button block clear type="submit" class="button button-block button-default or-button" text-uppercase style="color: #999;">Or
+      </button>
+
+      <h3 tappable>New User? <span tappable style="color: red" (click)="showSignup()">Register</span> Here</h3>
+
+      <br>
+
+    </form>
+    <br>
+    </div>
+    </div>
+
+
+     <div *ngIf="!values.isLoggedIn && _showSignup" class="account-register">
+    <form #f="ngForm">
+      <ion-list>
+        <ion-item>
+          <ion-label floating>First Name
+          </ion-label>
+          <ion-input type="text" [(ngModel)]="form.firstName" name="firstname">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Last Name
+          </ion-label>
+          <ion-input type="text" [(ngModel)]="form.lastName" name="lastname">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Email
+          </ion-label>
+          <ion-input type="email" [(ngModel)]="form.email" name="Email">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Password
+          </ion-label>
+          <ion-input type="password" [(ngModel)]="form.password" name="password">
+          </ion-input>
+        </ion-item>
+      </ion-list>
+        <div  class="margin">
+            <h2>{{errorRegisterMessage}}
+            </h2>
+        </div>
+        
+
+      <div class="margin"> 
+        <button ion-button block color="button-color" type="submit" class="button button-block button-default" text-uppercase [disabled]="disableSubmit" (click)="register()">Register 
+        </button>
+      </div>
+    </form>
+  </div>
+
+
+   
    <div *ngIf="values.isLoggedIn && userProfiles" style="height: 100%;">
       <ion-list style="margin:15px 0 0 0;font-family: Arial ">
          <div *ngIf="userProfiles.photoURL" class="profile-image">
@@ -142,9 +156,9 @@
             <ion-icon item-right hideWhen="ios" class="ion-ios-arrow-forward item-icon"></ion-icon>
          </button>
          <button ion-item (click)="address(userProfiles)" *ngIf="!userProfiles.displayName">
-         <ion-icon item-start ios="ios-person" md="md-person"></ion-icon>
-         Add you Name:
-         <ion-icon item-right hideWhen="ios" class="ion-ios-arrow-forward item-icon"></ion-icon>
+            <ion-icon item-start ios="ios-person" md="md-person"></ion-icon>
+            Add you Name:
+            <ion-icon item-right hideWhen="ios" class="ion-ios-arrow-forward item-icon"></ion-icon>
          </button>
          <button ion-item *ngIf="!userProfiles.email">
             <ion-icon item-start ios="ios-mail" md="md-mail"></ion-icon>
@@ -152,9 +166,9 @@
             <ion-icon item-right hideWhen="ios" class="ion-ios-arrow-forward item-icon"></ion-icon>
          </button>
          <button ion-item (click)="address(userProfiles)" *ngIf="userProfiles.phoneNumber">
-         <ion-icon item-start ios="ios-phone-portrait" md="md-phone-portrait"></ion-icon>
-         {{userProfiles.phoneNumber}}
-         <ion-icon item-right hideWhen="ios" class="ion-ios-arrow-forward item-icon"></ion-icon>
+            <ion-icon item-start ios="ios-phone-portrait" md="md-phone-portrait"></ion-icon>
+            {{userProfiles.phoneNumber}}
+            <ion-icon item-right hideWhen="ios" class="ion-ios-arrow-forward item-icon"></ion-icon>
          </button>
          <button ion-item (click)="myOrder()">
             <ion-icon item-start ios="md-list" md="md-list"></ion-icon>
@@ -162,19 +176,19 @@
             <ion-icon item-right hideWhen="ios" class="ion-ios-arrow-forward item-icon"></ion-icon>
          </button>
          <button ion-item (click)="address(userProfiles)" *ngIf="userProfiles.address">
-         <ion-icon item-start ios="ios-create" md="md-create"></ion-icon>
-         Address: {{userProfiles.address}}
-         <ion-icon item-right hideWhen="ios" class="ion-ios-arrow-forward item-icon"></ion-icon>
+            <ion-icon item-start ios="ios-create" md="md-create"></ion-icon>
+            Address: {{userProfiles.address}}
+            <ion-icon item-right hideWhen="ios" class="ion-ios-arrow-forward item-icon"></ion-icon>
          </button>
-         <button ion-item (click)="address(userProfiles)" *ngIf="!userProfiles.phone">
-         <ion-icon item-start ios="ios-phone-portrait" md="md-phone-portrait"></ion-icon>
-         Add Phone Number
-         <ion-icon item-right hideWhen="ios" class="ion-ios-arrow-forward item-icon"></ion-icon>
+         <button ion-item (click)="address(userProfiles)" *ngIf="!userProfiles.phoneNumber">
+            <ion-icon item-start ios="ios-phone-portrait" md="md-phone-portrait"></ion-icon>
+            Add Phone Number
+            <ion-icon item-right hideWhen="ios" class="ion-ios-arrow-forward item-icon"></ion-icon>
          </button>
          <button ion-item (click)="address(userProfiles)"  *ngIf="!userProfiles.address">
-         <ion-icon item-start ios="ios-create" md="md-create"></ion-icon>
-         Add Address
-         <ion-icon item-right hideWhen="ios" class="ion-ios-arrow-forward item-icon"></ion-icon>
+            <ion-icon item-start ios="ios-create" md="md-create"></ion-icon>
+            Add Address
+            <ion-icon item-right hideWhen="ios" class="ion-ios-arrow-forward item-icon"></ion-icon>
          </button>
       </ion-list>
    </div>

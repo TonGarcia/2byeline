@@ -33,7 +33,7 @@ export class OrderList {
   		    		items: snap.val().items,
               customerDetails: snap.val().customerDetails,
               payments: snap.val().payments,
-              timeStamp: snap.val().timeStamp,
+              deliveryDate: snap.val().deliveryDate,
               total: snap.val().total
       	   });
     	  });

@@ -25,13 +25,13 @@
          <ion-item style="padding-top:10px" class="option">
             <ion-label>Brand</ion-label>
             <ion-select [(ngModel)]="product.brand" name="brand">
-            <ion-option *ngFor="let item of brandName" value="{{item.id}}">{{item.name}}</ion-option>
+            <ion-option *ngFor="let item of brandName" value="{{item.name}}">{{item.name}}</ion-option>
             </ion-select>
          </ion-item>
          <ion-item style="padding-top:10px" class="option">
             <ion-label>Vendor</ion-label>
             <ion-select [(ngModel)]="product.vendor" name="vendor">
-            <ion-option *ngFor="let item of vendorName" value="{{item.id}}">{{item.name}}</ion-option>
+            <ion-option *ngFor="let item of vendorName" value="{{item.name}}">{{item.name}}</ion-option>
             </ion-select>
          </ion-item>
          <ion-item>

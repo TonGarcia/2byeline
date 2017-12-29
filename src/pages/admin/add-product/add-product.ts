@@ -46,7 +46,7 @@ export class AddProductPage {
       snapshot.forEach( snap => {
         this.categoryName.push({
         id: snap.key,
-        name: snap.val().name,
+        name: snap.val().name
       
         });
       });
@@ -60,7 +60,7 @@ export class AddProductPage {
       snapshot.forEach( snap => {
         this.brandName.push({
         id: snap.key,
-        name: snap.val().name,
+        name: snap.val().name
       
         });
       });
@@ -74,7 +74,7 @@ export class AddProductPage {
       snapshot.forEach( snap => {
         this.vendorName.push({
         id: snap.key,
-        name: snap.val().name,
+        name: snap.val().name
       
         });
       });
@@ -113,11 +113,11 @@ export class AddProductPage {
 
       console.log(snapshot);
 
-      var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100 ;
+      var progress = (uploadTask.snapshot.bytesTransferred / uploadTask.snapshot.totalBytes) * 100 ;
 
         console.log('upload' + progress + '% done' );
 
-        switch(snapshot.state){
+        switch(uploadTask.snapshot.state){
           case firebase.storage.TaskState.PAUSED:   // or Paused
           console.log('upLoad is paused');
           break;

@@ -26,7 +26,7 @@ export class EditCustomerPage {
   }
 
   saveCustomer(){
-    	this.service.editCustomers(this.customer.displayName, this.customer.phone, this.customer.address, this.customer.role,  this.customer.id)
+    	this.service.editCustomers(this.customer.displayName, this.customer.phoneNumber, this.customer.address, this.customer.role,  this.customer.id)
       .then(() =>{
       	this.nav.pop();
      	}).catch( (error) => {this.handleErrors(error);

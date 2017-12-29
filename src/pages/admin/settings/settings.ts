@@ -23,11 +23,13 @@ export class SettingsPage {
   banners: any;
   selectedFile:any;
   bannerList: any;
+  brandBanners: any;
   disableSubmit: boolean = false;
   constructor(public nav: NavController, public navParams: NavParams, public service: Service, public values: Values, public translateService: TranslateService) {
     this.selectedFile = [];
   	this.form = {};
     this.banners = [];
+    this.brandBanners = [];
   	this.form.currency = "USD";
   	this.language = "english"
     this.form.client_id = "";
@@ -47,16 +49,21 @@ export class SettingsPage {
       this.banners[2] = snapshot.val().banners3;
     });
 
+
+
   }
 
 	saveSetting(){
 		this.service.addSettting(this.form)
 		.then(() =>{
      this.values.currency = this.form.currency;
+
 		 this.service.addBanner(this.banners)
       .then(() =>{
-      this.nav.pop();
       });
+
+
+      this.nav.pop();
 		});
 	}
 
@@ -86,9 +93,9 @@ export class SettingsPage {
         console.log(snapshot);
       // Observe state change events such as progress, pause, and resume
       // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-      var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      var progress = (uploadTask.snapshot.bytesTransferred / uploadTask.snapshot.totalBytes) * 100;
       console.log('Upload is ' + progress + '% done');
-      switch (snapshot.state) {
+      switch (uploadTask.snapshot.state) {
         case firebase.storage.TaskState.PAUSED: // or 'paused'
           console.log('Upload is paused');
           break;
@@ -114,6 +121,5 @@ saveBanner(){
         console.log('saved');
       });
 }
-
 
 }

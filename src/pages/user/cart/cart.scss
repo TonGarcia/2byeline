@@ -3,7 +3,8 @@ page-cart {
 .item-name {
   box-shadow: 0 0.5px 1px rgba(0, 0, 0, 0.3);
   background-color: #f5f2f2;
-  font-size: 14px;
+  font-size: 18px;
+  font-family: "Times New Roman", Times, serif;
 }
 
 .quantity {
@@ -13,8 +14,8 @@ page-cart {
 
 
 .item.item-block .item-inner {
-    padding-left: 8px;
-    border-bottom: 1px solid #dedede;
+    padding-left: 12px;
+    border-bottom: 1px solid #f1efef;
 }
 
 .colr {
@@ -22,5 +23,64 @@ page-cart {
         width: 70%;
         background-color: #f53d3d;
     }
+
+  .list{
+    margin: 0px 12px;
+  }
+
+  .list-ios > .item-block:last-child, .list-ios > .item-wrapper:last-child .item-block {
+    border-bottom: 0.55px solid #f1efef;
+  }
+
+  .col{
+      padding-left: 12px;
+  }
+
+  .payment-form{
+    margin: 0px;
+
+    .label {
+       margin: 0px; 
+      }
+
+   .payment-name{
+    padding:0px;
+
+      .label {
+       margin: 0px; 
+      }
+    }
+  }
+
+  .label-ios {
+   margin: 5px 8px 0px 0px;
+}
+  
+  .label-md {
+    margin: 5px 8px 0px 0px;
+}
+
+  .toolbar-ios .segment-button {
+      max-width: 100%;
+      height: 100%;
+      font-size: 1.8rem;
+      line-height: 4.5rem;
+      color:white;
+       border-style: inset;
+      border-color: #387ef5;
+          border-bottom: black;
+  }
+
+  .toolbar-ios-danger .segment-ios .segment-button.segment-activated {
+    color: #f53d3d;
+        background-color: #ffffff;
+  }
+
+  .checkout-button{
+    background-color: red;
+    margin-top: 25px;
+  }
+
+  
 }
 

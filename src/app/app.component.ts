@@ -44,6 +44,7 @@ export class MyApp {
       const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
         if (user) {
           this.values.isLoggedIn = true;
+           this.values.id = user.uid;
           this.values.userRole = firebase.database().ref('/Customer-Role').child(user.uid).on('value', snapshot =>{
             if(snapshot.val()){
                 this.values.userRole = snapshot.val().role;
@@ -58,7 +59,7 @@ export class MyApp {
   pushsetup() {
     const options: PushOptions = {
      android: {
-         senderID: '456352511209'
+         senderID: '483725125990'
      },
      ios: {
          alert: 'true',

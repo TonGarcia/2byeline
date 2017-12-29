@@ -3,7 +3,8 @@ import { MyApp } from './app.component';
 //import  { KeysPipe } from '../providers/pipes/pipe';
 import { IonicApp, IonicModule } from 'ionic-angular';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule, Http } from '@angular/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
@@ -18,18 +19,19 @@ import { Service } from '../providers/service';
 import { Facebook } from '@ionic-native/facebook';
 import { WpService } from '../providers/wp-service';
 import { StatusBar } from '@ionic-native/status-bar';
-import { GooglePlus } from '@ionic-native/google-plus';
+//import { GooglePlus } from '@ionic-native/google-plus';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Functions } from '../providers/functions/functions';
 import { SocialSharing } from '@ionic-native/social-sharing';
-import { TwitterConnect } from '@ionic-native/twitter-connect';
+//import { TwitterConnect } from '@ionic-native/twitter-connect';
 import { Push } from '@ionic-native/push';
 import { PayPal } from '@ionic-native/paypal';
 import { Stripe } from '@ionic-native/stripe';
 import { NativeStorage } from '@ionic-native/native-storage';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 //import { Crop } from '@ionic-native/crop';
 
-export function createTranslateLoader(http: Http) {
+export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
@@ -47,15 +49,16 @@ export function createTranslateLoader(http: Http) {
 
   imports: [
     BrowserModule,
-    HttpModule,
-    IonicModule.forRoot(MyApp),
-    TranslateModule.forRoot({
-    loader: {
-      provide: TranslateLoader,
-      useFactory: (createTranslateLoader),
-      deps: [Http]
-    }
-  })
+   		HttpClientModule,
+    		HttpModule,
+    		IonicModule.forRoot(MyApp),
+   		 TranslateModule.forRoot({
+     		 loader: {
+       			 provide: TranslateLoader,
+        		useFactory: (createTranslateLoader),
+        		deps: [HttpClient]
+      			}
+    		})
   ],
 
 
@@ -74,13 +77,14 @@ export function createTranslateLoader(http: Http) {
     StatusBar,
     WpService,
     Functions,
-    GooglePlus,
+    //GooglePlus,
     SplashScreen,
     SocialSharing,
-    TwitterConnect,
+   // TwitterConnect,
     Push,
     PayPal,
-    Stripe 
+    Stripe,
+    InAppBrowser
   ]
 
 })

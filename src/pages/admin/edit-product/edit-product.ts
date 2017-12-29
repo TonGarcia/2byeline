@@ -107,10 +107,10 @@ export class EditProductPage {
     uploadTask.on('state_changed', (snapshot) =>{
       console.log(snapshot);
 
-      var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      var progress = (uploadTask.snapshot.bytesTransferred / uploadTask.snapshot.totalBytes) * 100;
         console.log('upload' + progress + '% done');
 
-      switch(snapshot.state){
+      switch(uploadTask.snapshot.state){
         case firebase.storage.TaskState.PAUSED: 
           console.log('upload is paused');
           break;
@@ -145,10 +145,6 @@ export class EditProductPage {
       return false;
     }
 
-    if(this.product.sale_price == undefined || this.product.sale_price == ''){
-      this.errorMessage = 'Please Add Sale Price';
-      return false;
-    } 
     if(this.product.short_description == undefined || this.product.short_description == ''){
       this.errorMessage = 'Please Add Short Description';
       return false;
