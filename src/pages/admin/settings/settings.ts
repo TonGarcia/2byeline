@@ -30,8 +30,8 @@ export class SettingsPage {
   	this.form = {};
     this.banners = [];
     this.brandBanners = [];
-  	this.form.currency = "USD";
-  	this.language = "english"
+  	this.form.currency = "BRL";
+  	this.language = "pt-br"
     this.form.client_id = "";
     this.form.environment_sandbox = "";
     this.form.publish_key = "" ;
@@ -40,7 +40,7 @@ export class SettingsPage {
     this.service.getSetting().on('value', snapshot =>{
       if(snapshot.val()){
         this.form = snapshot.val();
-      }  
+      }
     });
 
     this.service.getBanners().on('value', snapshot =>{
@@ -86,7 +86,7 @@ export class SettingsPage {
     var fileName = this.selectedFile.name;
     var metadata = { contentType: 'image/jpeg'};
     var storageRef = firebase.storage().ref('/Banners/' + fileName);
-  
+
     var uploadTask = storageRef.put(this.selectedFile, metadata);
 
       uploadTask.on('state_changed', (snapshot) => {

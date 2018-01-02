@@ -1,12 +1,12 @@
 <!--
    Generated template for the Cart page.
-   
+
    See http://ionicframework.com/docs/components/#navigation for more info on
    Ionic pages and navigation.
    -->
 <ion-header>
    <ion-navbar color="danger">
-            <ion-title text-center>Cart</ion-title>
+            <ion-title text-center> {{ "Cart" | translate }} </ion-title>
    </ion-navbar>
 </ion-header>
 <ion-content class="cart">
@@ -116,7 +116,7 @@
                         <ion-input required type="text" [(ngModel)]="form.stripe_exp_month" name="stripe_exp_year">
                         </ion-input>
                      </ion-item>
-                     <ion-item class="payment-name"> 
+                     <ion-item class="payment-name">
                         <ion-label floating>Expiry Year (YYYY)
                         </ion-label>
                         <ion-input required type="text" [(ngModel)]="form.stripe_exp_year" name="stripe_exp_year">
@@ -130,7 +130,7 @@
                      </ion-item>
                   </ion-list>
                </form>
-               <br> 
+               <br>
             </div>
              <!--div *ngIf="form.payment_method =='pagomio'" style="margin:0px;background-color:#f2f2f2;padding:10px">
                <ion-label>Make Payment Via pagomio
@@ -162,7 +162,7 @@
                      </ion-item>
                   </ion-list>
                </form>
-               <br> 
+               <br>
             </div-->
             <div style="margin: 10px 5px;">
                <button ion-button no-margin item-right full color="shadow" [disabled]="disableSubmit" (click)="placeOrder(service.cart.line_items)">{{"Continue" | translate}}</button>
@@ -170,7 +170,7 @@
          </div>
       </div>
    </div>
-     
+
       {{service.prob  | json}}
 
    <!--ion-spinner *ngIf="!service.cart" name="crescent" style="display:block; margin-left: auto; margin-right:auto; margin-top: 5px; margin-bottom:5px" ></ion-spinner>
@@ -282,7 +282,7 @@
                         <ion-input required type="text" [(ngModel)]="form.stripe_exp_month" name="stripe_exp_year">
                         </ion-input>
                      </ion-item>
-                     <ion-item class="payment-name"> 
+                     <ion-item class="payment-name">
                         <ion-label floating>Expiry Year (YYYY)
                         </ion-label>
                         <ion-input required type="text" [(ngModel)]="form.stripe_exp_year" name="stripe_exp_year">
@@ -296,7 +296,7 @@
                      </ion-item>
                   </ion-list>
                </form>
-               <br> 
+               <br>
             </div>
              <div *ngIf="form.payment_method =='pagomio'" style="margin:0px;background-color:#f2f2f2;padding:10px">
                <ion-label>Make Payment Via pagomio
@@ -328,7 +328,7 @@
                      </ion-item>
                   </ion-list>
                </form>
-               <br> 
+               <br>
             </div>
             <div style="margin: 10px 5px;">
                <button ion-button no-margin item-right full color="shadow" [disabled]="disableSubmit" (click)="placeOrder(service.cart.line_items)">{{"Continue" | translate}}</button>
@@ -359,7 +359,7 @@
       <div *ngIf="service.cart.line_items">
 
          <div *ngIf="service.cart.line_items.length != 0">
-           
+
             <ion-list>
                <ion-item no-padding *ngFor="let item of service.cart.line_items" >
                   <ion-thumbnail item-left>
@@ -396,7 +396,7 @@
       </ion-list>
 
                  <ion-list *ngSwitchCase="'payments'">
-                  
+
              <div>
                <ion-list style="margin:0px" text-wrap radio-group [(ngModel)]="form.payment_method">
                <ion-item no-lines no-padding class="item-name">
@@ -443,7 +443,7 @@
                         <ion-input required type="text" [(ngModel)]="form.stripe_exp_month" name="stripe_exp_year">
                         </ion-input>
                      </ion-item>
-                     <ion-item class="payment-name"> 
+                     <ion-item class="payment-name">
                         <ion-label floating>Expiry Year (YYYY)
                         </ion-label>
                         <ion-input required type="text" [(ngModel)]="form.stripe_exp_year" name="stripe_exp_year">
@@ -457,7 +457,7 @@
                      </ion-item>
                   </ion-list>
                </form>
-               <br> 
+               <br>
             </div>
              <div *ngIf="form.payment_method =='pagomio'" style="margin:0px;background-color:#f2f2f2;padding:10px">
                <ion-label>Make Payment Via pagomio
@@ -489,11 +489,11 @@
                      </ion-item>
                   </ion-list>
                </form>
-               <br> 
+               <br>
 
             </div>
                   <div style="margin: 10px 5px;">
-              
+
                        <ion-segment [(ngModel)]="Checkout" class="checkout-button">
                 <ion-segment-button full style="color:#fff" value="cart" [disabled]="disableSubmit" (click)="placeOrder(service.cart.line_items)">{{"Continue" | translate}}</ion-segment-button>
             </ion-segment>
@@ -501,7 +501,7 @@
 
                  </ion-list>
 
-                 
+
                </div-->
 
 

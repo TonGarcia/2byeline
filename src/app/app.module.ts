@@ -35,6 +35,10 @@ export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
+// AoT requires an exported function for factories
+export function HttpLoaderFactory(http: Http) {
+ return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 
 
