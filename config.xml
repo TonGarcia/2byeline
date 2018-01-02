@@ -93,7 +93,6 @@
     <preference name="TwitterConsumerSecret" value="YsRgLuiBp5eZ7lehstqfQls2Q1wId3ZGyW2xR0z0dJd9ZTgcah" />
     <plugin name="cordova-plugin-stripe" spec="^1.5.3" />
     <plugin name="com.paypal.cordova.mobilesdk" spec="^3.5.0" />
-    <engine name="android" spec="~7.0.0" />
     <plugin name="phonegap-plugin-push" spec="^2.1.2">
         <variable name="FCM_VERSION" value="11.0.1" />
     </plugin>
@@ -101,4 +100,6 @@
         <variable name="APP_ID" value="1858204527781194" />
         <variable name="APP_NAME" value="ByeLine" />
     </plugin>
+    <engine name="android" spec="~7.0.0" />
+    <engine name="ios" spec="~4.5.4" />
 </widget>
