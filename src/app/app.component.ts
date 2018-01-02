@@ -39,7 +39,8 @@ export class MyApp {
 
     });
 
-      this.translateService.setDefaultLang('english');
+      this.translateService.setDefaultLang('pt-br');
+      this.translateService.use('pt-br');
 
       const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
         if (user) {
