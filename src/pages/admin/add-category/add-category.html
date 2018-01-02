@@ -1,6 +1,6 @@
 <!--
    Generated template for the AddCategory page.
-   
+
    See http://ionicframework.com/docs/v2/components/#navigation for more info on
    Ionic pages and navigation.
    -->
@@ -25,7 +25,7 @@
             </ion-item>
             <ion-item>
                <ion-thumbnail>
-                  <img src="{{downloadURL}}">
+                  <img src="{{downloadURL || 'assets/images/empty-bag.png' }}">
                </ion-thumbnail>
                <input type="file" name="select Image" (change)="onChange($event)" >
             </ion-item>

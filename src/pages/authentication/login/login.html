@@ -1,6 +1,6 @@
 <!--
    Generated template for the Login page.
-   
+
    See http://ionicframework.com/docs/v2/components/#navigation for more info on
    Ionic pages and navigation.
    -->
@@ -22,7 +22,7 @@
 
 <div class="login-content" *ngIf="!values.isLoggedIn && !_showSignup">
    <div>
-      <img src="assets/images/logo.jpg">
+      <img src="assets/images/logo.png">
    </div>
 
   <div class="margin">
@@ -30,7 +30,7 @@
       <ion-list>
 
         <ion-item>
-          <ion-input required type="email" [(ngModel)]="form.email" name="firstname" placeholder="Username">
+          <ion-input required type="email" [(ngModel)]="form.email" name="firstname" placeholder="E-mail">
           </ion-input><ion-icon name="md-mail" item-left></ion-icon>
         </ion-item>
 
@@ -63,7 +63,7 @@
 
         </ion-col>
          <ion-col>
-                <button ion-button block style="background-color:#00aced; color: #fff" type="submit" class="button button-block button-default" text-uppercase [disabled]="disableSubmit" 
+                <button ion-button block style="background-color:#00aced; color: #fff" type="submit" class="button button-block button-default" text-uppercase [disabled]="disableSubmit"
                 (click)="twLogin()">
                 <ion-icon item-left style="color:#fff; padding-right: 5px;" ios="logo-twitter" md="logo-twitter" ></ion-icon>
                  Twitter
@@ -123,17 +123,17 @@
             <h2>{{errorRegisterMessage}}
             </h2>
         </div>
-        
 
-      <div class="margin"> 
-        <button ion-button block color="button-color" type="submit" class="button button-block button-default" text-uppercase [disabled]="disableSubmit" (click)="register()">Register 
+
+      <div class="margin">
+        <button ion-button block color="button-color" type="submit" class="button button-block button-default" text-uppercase [disabled]="disableSubmit" (click)="register()">Register
         </button>
       </div>
     </form>
   </div>
 
 
-   
+
    <div *ngIf="values.isLoggedIn && userProfiles" style="height: 100%;">
       <ion-list style="margin:15px 0 0 0;font-family: Arial ">
          <div *ngIf="userProfiles.photoURL" class="profile-image">
